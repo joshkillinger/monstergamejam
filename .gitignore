@@ -2,3 +2,6 @@ Monster Jam/Library/
 Monster Jam/Temp/
 Monster Jam/obj/
 Monster Jam/.vs/
+Monster Jam/.meta/
+*.meta
+*.sln
