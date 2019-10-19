@@ -42,9 +42,10 @@ public class AnimateMovement : MonoBehaviour
         while (Time.time < endTime)
         {
             yield return null;
-            var t = Mathf.Clamp01((endTime - Time.time) / TurnTime);
+            float lastY = transform.localEulerAngles.y;
+            var t = 1 - ((endTime - Time.time) / TurnTime);
             float y = Mathf.LerpAngle(startY, targetAngle, t);
-            transform.eulerAngles.Set(transform.eulerAngles.x, y, transform.eulerAngles.z);
+            transform.Rotate(Vector3.up, y - lastY);
         }
 
         turning = false;

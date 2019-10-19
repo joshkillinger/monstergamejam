@@ -32,6 +32,7 @@ public class FastPumpkin : PumpkinController
                 yield return turn(targetAngle);
             }
             //else stay
+            nextState = idle();
         }
     }
 
