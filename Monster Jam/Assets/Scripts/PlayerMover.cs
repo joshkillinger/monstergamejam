@@ -16,7 +16,7 @@ public class PlayerMover : MonoBehaviour
 	[SerializeField]
 	float acceleration = 10;
 	[SerializeField]
-	float dragFactor = 0.6f;
+	float dragFactor = 0.8f;
 	bool moving = false;
 
 	Vector3 externalForce = Vector3.zero;
@@ -53,10 +53,10 @@ public class PlayerMover : MonoBehaviour
 
 		var internalForce = (((horizontalAxis * horizontal) + (verticalAxis * vertical))).normalized * acceleration;
 
-		Vector3 lookAt = transform.position + transform.forward;
 		if (internalForce.sqrMagnitude > 0)
 		{
-			lookAt = transform.position + internalForce;
+			var lookAt = transform.position + internalForce;
+			transform.LookAt(lookAt);
 		}
 
 		if (body.velocity.sqrMagnitude < (maxSpeed * maxSpeed))
