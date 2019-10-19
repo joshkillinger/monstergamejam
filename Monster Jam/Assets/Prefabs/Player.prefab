@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 96732859809531449}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   verticalAxis: {x: 0, y: 0, z: 1}
   maxSpeed: 1000
   acceleration: 100
+  turnSpeed: 10
   dragFactor: 0.8
 --- !u!114 &96732859809531449
 MonoBehaviour:
