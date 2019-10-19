@@ -8,25 +8,16 @@ public class PlayerAnimator : MonoBehaviour
 
 	private void Start()
 	{
-		if (anim == null)
-		{
-			anim = GetComponent<Animator>();
-		}
+		anim = GetComponent<Animator>();
 	}
 
 	public void StartAnimation(string tag)
 	{
-		if (anim != null)
-		{
-			anim.SetBool(tag, true);
- 		} 
+		anim.SetBool(tag, true);
 	}
 
 	public void StopAnimation(string tag)
 	{
-		if (anim != null)
-		{
-			anim.SetBool(tag, false);
-		}
+		anim.SetBool(tag, false);
 	}
 }

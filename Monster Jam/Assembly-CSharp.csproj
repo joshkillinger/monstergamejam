@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\PlayerMover.cs" />
     <Compile Include="Assets\Scripts\ProcGen\MapSpawner.cs" />
     <Compile Include="Assets\Scripts\ProcGen\MapTile.cs" />
+    <Compile Include="Assets\Scripts\Sprint.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
