@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4672008889507404494}
   - component: {fileID: 8887895142124938868}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678244865269955427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children: []
-  m_Father: {fileID: 8114258590056018059}
+  m_Father: {fileID: 5513336622582236505}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &4672008889507404494
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678244865269955427}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -6140042677033249474, guid: 3e16acab8cceba8498fc991ba0a02f1b, type: 3}
 --- !u!23 &8887895142124938868
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -78,6 +78,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &849771013532115729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5513336622582236505}
+  m_Layer: 0
+  m_Name: Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5513336622582236505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849771013532115729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7732329528308710039}
+  m_Father: {fileID: 8114258590056018059}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6032981321698418678
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8114258590056018059}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 28.34, y: 0, z: 0}
 --- !u!108 &2047903726908094658
 Light:
@@ -200,8 +231,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7732329528308710039}
   - {fileID: 7722504865769751683}
+  - {fileID: 5513336622582236505}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 6199985763815875678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ae4cd21a8efc2840a2339e19a126be7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981dda59cbd1ba545b510d87ce776210, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -251,14 +282,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6199985763815875678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4911139b087d743a0e3ddb36dbfa21, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f031d1212f875141a17339d06a98779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveTrigger: Move
-  TurnTrigger: Turn
-  TurnTime: 0.5
-  MoveTime: 0.75
-  MoveSpeed: 2
+  MaxTurnAngle: 90
+  AlertRange: 100
+  IdleUpdateRate: 2
+  PursuitRange: 80
+  AlertUpdateRate: 1
+  outOfRangeRetries: 2
 --- !u!114 &6792162243513861828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,12 +300,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6199985763815875678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a0e85bc8fc34546954aa710c897f1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bbce89b5cf85684e9a39862e577c924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTurnAngle: 90
-  AlertRange: 100
-  IdleUpdateRate: 2
-  PursuitRange: 80
-  AlertUpdateRate: 1
-  outOfRangeRetries: 2
+  MoveTrigger: Move
+  TurnTrigger: Turn
+  TurnTime: 0.5
+  MoveTime: 0.75
+  MoveSpeed: 2
+  turning: 0
+  moving: 0
