@@ -361,45 +361,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 96732859809531448, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: defaultStats.acceleration
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 96732859809531448, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: defaultStats.maxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 96732859809531448, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: defaultStats.dragFactor
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 96732859809531448, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: defaultStats.turnSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616804283572414839, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: sprintStats.maxSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616804283572414839, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: sprintStats.acceleration
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616804283572414839, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: sprintStats.turnSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616804283572414839, guid: c0956092eacaf4a2c803c521f493e851,
-        type: 3}
-      propertyPath: sprintStats.dragFactor
-      value: 0.8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0956092eacaf4a2c803c521f493e851, type: 3}
