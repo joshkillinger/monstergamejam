@@ -11,12 +11,13 @@ public class PlayerMover : MonoBehaviour
 	Vector3 horizontalAxis = Vector3.right;
 	[SerializeField]
 	Vector3 verticalAxis = Vector3.up;
+	Vector3 rotationAxis = Vector3.forward;
 	[SerializeField]
 	float maxSpeed = 10f;
 	[SerializeField]
 	float acceleration = 10f;
 	[SerializeField, Tooltip("Degrees Per Frame")]
-	float turnSpeed = 10f;
+	float turnSpeed = 360f;
 	[SerializeField]
 	float dragFactor = 0.8f;
 	bool moving = false;
@@ -27,10 +28,14 @@ public class PlayerMover : MonoBehaviour
 	{
 		body = GetComponent<Rigidbody>();
 		anim = GetComponent<PlayerAnimator>();
+
+		rotationAxis = Vector3.Cross(horizontalAxis, verticalAxis);
 	}
 
 	private void FixedUpdate()
 	{
+		rotationAxis = Vector3.Cross(horizontalAxis, verticalAxis);
+
 		var horizontal = Input.GetAxis($"Horizontal");
 		var vertical = Input.GetAxis($"Vertical");
 
@@ -57,8 +62,15 @@ public class PlayerMover : MonoBehaviour
 
 		if (internalForce.sqrMagnitude > 0)
 		{
-			var lookAt = transform.position + internalForce;
-			transform.LookAt(lookAt);
+			var lookAt = internalForce.normalized;
+
+			var angle = Mathf.Acos(Vector3.Dot(Vector3.forward, lookAt)) * Mathf.Rad2Deg;
+			if (Vector3.Dot(Vector3.right, lookAt) > 0)
+			{
+				angle *= -1;
+			}
+
+			body.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), turnSpeed);
 		}
 
 		if (body.velocity.sqrMagnitude < (maxSpeed * maxSpeed))
