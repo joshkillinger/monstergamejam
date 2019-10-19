@@ -1,10 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-<<<<<<< HEAD
 # Visual Studio 15
-=======
-# Visual Studio for Mac
->>>>>>> 5c6712ba0314198dee0df9d2248db9c6cb30ad88
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{8F8E45F8-0403-492C-0035-A91B0C59DE0B}"
 EndProject
 Global

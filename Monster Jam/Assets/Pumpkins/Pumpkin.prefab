@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678244865269955427}
-  m_Mesh: {fileID: -6140042677033249474, guid: 3e16acab8cceba8498fc991ba0a02f1b, type: 3}
+  m_Mesh: {fileID: -6140042677033249474, guid: 020774398ac519e48801257ced2fed6b, type: 3}
 --- !u!23 &8887895142124938868
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 6199985763815875678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 981dda59cbd1ba545b510d87ce776210, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2ae4cd21a8efc2840a2339e19a126be7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -282,25 +282,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6199985763815875678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f031d1212f875141a17339d06a98779, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxTurnAngle: 90
-  AlertRange: 100
-  IdleUpdateRate: 2
-  PursuitRange: 80
-  AlertUpdateRate: 1
-  outOfRangeRetries: 2
---- !u!114 &6792162243513861828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199985763815875678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbce89b5cf85684e9a39862e577c924, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4911139b087d743a0e3ddb36dbfa21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveTrigger: Move
@@ -310,3 +292,21 @@ MonoBehaviour:
   MoveSpeed: 2
   turning: 0
   moving: 0
+--- !u!114 &6792162243513861828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199985763815875678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a0e85bc8fc34546954aa710c897f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxTurnAngle: 90
+  AlertRange: 100
+  IdleUpdateRate: 2
+  PursuitRange: 80
+  AlertUpdateRate: 1
+  outOfRangeRetries: 2
