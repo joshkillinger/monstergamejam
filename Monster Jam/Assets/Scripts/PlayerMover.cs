@@ -12,9 +12,11 @@ public class PlayerMover : MonoBehaviour
 	[SerializeField]
 	Vector3 verticalAxis = Vector3.up;
 	[SerializeField]
-	float maxSpeed = 10;
+	float maxSpeed = 10f;
 	[SerializeField]
-	float acceleration = 10;
+	float acceleration = 10f;
+	[SerializeField, Tooltip("Degrees Per Frame")]
+	float turnSpeed = 10f;
 	[SerializeField]
 	float dragFactor = 0.8f;
 	bool moving = false;
