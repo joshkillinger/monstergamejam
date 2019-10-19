@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(PlayerAnimator))]
-public class CharacterMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
 	Rigidbody body = null;
 	PlayerAnimator anim = null;
