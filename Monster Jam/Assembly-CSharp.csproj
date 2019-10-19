@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterInput.cs" />
+    <Compile Include="Assets\Scripts\FastPumpkin.cs" />
+    <Compile Include="Assets\Scripts\PumpkinController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
