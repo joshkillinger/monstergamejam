@@ -740,6 +740,7 @@
     <Compile Include="Assets\Scripts\ProcGen\MapSpawner.cs" />
     <Compile Include="Assets\Scripts\ProcGen\MapTile.cs" />
     <Compile Include="Assets\Scripts\PumpkinController.cs" />
+    <Compile Include="Assets\Scripts\Sprint.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/sam/Documents/projects/GameJams/MonsterJam/Monster Jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
