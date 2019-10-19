@@ -66,6 +66,9 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -108,6 +111,9 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
@@ -119,12 +125,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/joshk/Documents/monstergamejam/Monster Jam/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
