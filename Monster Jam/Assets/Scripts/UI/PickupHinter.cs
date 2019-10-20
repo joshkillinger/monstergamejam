@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupHinter : MonoBehaviour
 {
+    public float wiggleSpeed = 2;
     public float minDistForHint = 1000;
     public float maxDistForHint = 5000;
     public float MaxScale;
@@ -24,7 +25,7 @@ public class PickupHinter : MonoBehaviour
         {
             scales.Add(Random.value * MaxScale);
             times.Add(Random.value);
-            line.SetPosition(i, new Vector3(Mathf.Sin(times[i] + Time.time) * scales[i], 0, i * length / line.positionCount));
+            line.SetPosition(i, new Vector3(Mathf.Sin(times[i] + Time.time * 2) * scales[i], 0, i * length / line.positionCount));
         }
     }
 

@@ -142,7 +142,7 @@ public class PumpkinController : MonoBehaviour
         {
             var vecToPlayer = (player.position - transform.position).normalized;
             var angle = getTurnAngle();
-            if (Vector3.Dot(vecToPlayer, transform.forward) < 0)
+            if (Vector3.Dot(vecToPlayer, transform.forward) < 0.1)
             {
                 //don't jump away from player, just turn
                 yield return turn(angle);

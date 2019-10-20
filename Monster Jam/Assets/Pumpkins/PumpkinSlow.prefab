@@ -35,6 +35,11 @@ PrefabInstance:
       propertyPath: PlayerStunDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8818678722033141697, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8114258590056018059, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalPosition.x
