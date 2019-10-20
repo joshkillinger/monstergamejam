@@ -7,7 +7,7 @@ public class InventoryView : MonoBehaviour
     public InventoryManager.ItemType ItemType = InventoryManager.ItemType.PumpkinSeed;
 
     InventoryManager inventory;
-    private uint cachedVersion;
+    private ulong cachedVersion;
     private Text text;
 
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class InventoryView : MonoBehaviour
         if (cachedVersion != inventory.Version)
         {
             text.text = inventory.GetCount(ItemType).ToString();
+            cachedVersion = inventory.Version;
         }
     }
 }
