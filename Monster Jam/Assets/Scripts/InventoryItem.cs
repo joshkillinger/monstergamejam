@@ -11,8 +11,7 @@ public class InventoryItem : MonoBehaviour
 	public Collider PickupCollider = null;
 
 	[SerializeField]
-	int points = 1;
-	public int Points => points;
+	float points = 1;
 
     private void OnTriggerEnter(Collider other)
     {

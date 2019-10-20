@@ -42,7 +42,6 @@ public class InventoryManager : MonoBehaviour
 	{
 		++Version;
 
-		item.Event_ToggleVisibility(false);
 		item.transform.parent = itemContainer;
 		items[item.ItemType].Add(item);
 
