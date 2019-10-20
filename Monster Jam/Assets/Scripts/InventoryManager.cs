@@ -131,18 +131,4 @@ public class InventoryManager : MonoBehaviour
 
 		return null;
 	}
-
-	public bool IsHoldingItem(GameObject itemObject)
-	{
-		var parent = itemObject.transform;
-		while (parent != null)
-		{
-			if (parent == itemContainer)
-			{
-				return true;
-			}
-			parent = parent.parent;
-		}
-		return false;
-	}
 }

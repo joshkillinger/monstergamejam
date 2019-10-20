@@ -9,8 +9,12 @@ public class InventoryItem : MonoBehaviour
     public string PickupTrigger = "PickUp";
     
 	public Collider PickupCollider = null;
+	[SerializeField]
+	public GameObject blinker = null;
 
 	public int Points = 1;
+	public float MinBlinkRate = 1f;
+	public float MaxBlinkRate = 10f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,7 +44,24 @@ public class InventoryItem : MonoBehaviour
 
 	private IEnumerator delayDestroy(float delay)
 	{
-		yield return new WaitForSeconds(delay);
+		var startTime = Time.time;
+		var now = Time.time;
+		var timeSinceBlink = 0f;
+		while(now - startTime < delay)
+		{
+			var blinkRate = Mathf.Lerp(MinBlinkRate, MaxBlinkRate, (now - startTime) / delay);
+			Debug.Log(blinkRate);
+			if (blinker != null && blinkRate > 0 && timeSinceBlink > (1 / blinkRate))
+			{
+				blinker.SetActive(!blinker.activeSelf);
+				timeSinceBlink = 0;
+			}
+
+			yield return null;
+			now = Time.time;
+			timeSinceBlink += Time.deltaTime;
+		}
+
 		Event_Destroy();
 	}
 
