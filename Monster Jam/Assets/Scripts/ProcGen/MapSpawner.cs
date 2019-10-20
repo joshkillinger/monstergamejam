@@ -7,6 +7,7 @@ public class MapSpawner : MonoBehaviour
     public int biomeWeightingPasses;
     public Vector2Int mapDimension;
     public List<GameObject> biomeTiles;
+    public GameObject playerPrefab;
     public GameObject cemeteryBiomeTile;
     public GameObject pumpkinBiomeTile;
     public GameObject fieldBiomeTile;
@@ -24,11 +25,14 @@ public class MapSpawner : MonoBehaviour
 
     private Vector2Int tileDimension;
     private List<List<GameObject>> tileInstances;
-    private List<GameObject> itemInstances; 
+    private List<GameObject> itemInstances;
+    private List<GameObject> fenceInstances;
+    private GameObject playerInstance;
     protected void Awake()
     {
         tileInstances = new List<List<GameObject>>();
         itemInstances = new List<GameObject>();
+        fenceInstances = new List<GameObject>();
         for(int i = 0; i < mapDimension.x; i++)
         {
             tileInstances.Add(new List<GameObject>());
@@ -58,6 +62,8 @@ public class MapSpawner : MonoBehaviour
                 if (i == mapDimension.x / 2 && j == mapDimension.y / 2)
                 {
                     tileInstances[i].Add(Instantiate(homeBaseTile, new Vector3(i * tileDimension.x, 0f, j * tileDimension.y), homeBaseTile.transform.rotation));
+                    playerInstance = Instantiate(playerPrefab, new Vector3(i * tileDimension.x, 0f, j * tileDimension.y) + new Vector3(5f, 0, 1f), Quaternion.identity);
+
                 }
                 else if (i == 0 && j == 0)
                 {
@@ -264,9 +270,9 @@ public class MapSpawner : MonoBehaviour
         Vector3 tile2Pos = tile2.gameObject.transform.position;
         if(Random.Range(0f, 1f) < .8f) {
             if (vertical)
-                Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation);
+                fenceInstances.Add(Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation));
             else
-                Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+                fenceInstances.Add(Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f)));
         }
     }
 

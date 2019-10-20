@@ -359,6 +359,8 @@ MonoBehaviour:
   - {fileID: 1718387221987414298, guid: fbbfa48a7d853a441b968d9edd546073, type: 3}
   - {fileID: 8360109682520808984, guid: d5a3f40c97a8bca42a63bfecb82823ed, type: 3}
   - {fileID: 2031433204325375776, guid: 3e590a97f519a754f9ce3190b427352e, type: 3}
+  playerPrefab: {fileID: 4907411879461207385, guid: c0956092eacaf4a2c803c521f493e851,
+    type: 3}
   cemeteryBiomeTile: {fileID: 2031433204325375776, guid: 3e590a97f519a754f9ce3190b427352e,
     type: 3}
   pumpkinBiomeTile: {fileID: 8360109682520808984, guid: d5a3f40c97a8bca42a63bfecb82823ed,
@@ -381,6 +383,10 @@ MonoBehaviour:
   cornerFenceTileSE: {fileID: 726781472510297093, guid: ea8e54eb46957274c8f1e92d58b1c784,
     type: 3}
   fenceObject: {fileID: 621593496382883196, guid: d2ab76b9e7d1c36458e650ee6961b514,
+    type: 3}
+  candyCorn: {fileID: 6675979830025655289, guid: d530e03fc78e83d49abb83ddb40dfa37,
+    type: 3}
+  pumpkinSeed: {fileID: 7321614655550258758, guid: 12035c9988317234aa3c5e687316343b,
     type: 3}
 --- !u!4 &1707751806
 Transform:
