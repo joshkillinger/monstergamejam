@@ -50,6 +50,7 @@ public class MapSpawner : MonoBehaviour
         }
         spawnFences();
         spawnItems();
+        makeItemTurnerOfferThing();
         
     }
 
@@ -274,6 +275,11 @@ public class MapSpawner : MonoBehaviour
             else
                 fenceInstances.Add(Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f)));
         }
+    }
+
+    protected void makeItemTurnerOfferThing()
+    {
+        gameObject.AddComponent<ItemTurnerOnAndOffer>().init(tileInstances, itemInstances, fenceInstances, playerInstance); 
     }
 
     protected GameObject getStraightUpRandomTile()

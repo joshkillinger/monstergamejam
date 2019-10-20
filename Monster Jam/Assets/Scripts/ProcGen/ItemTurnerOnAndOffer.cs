@@ -17,7 +17,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
 
 
 
-    public ItemTurnerOnAndOffer(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, GameObject player)
+    public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, GameObject player)
     {
         tileInstances = tiles;
         itemInstances = items;
