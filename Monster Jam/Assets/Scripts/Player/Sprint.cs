@@ -16,6 +16,8 @@ public class Sprint : MonoBehaviour
 	[SerializeField]
 	float staminaConsumption = 0.3f;
 
+	public bool PreventSprinting = false;
+
 	private void Start()
 	{
 		mover = GetComponent<PlayerMover>();
@@ -23,23 +25,30 @@ public class Sprint : MonoBehaviour
 
 	private void Update()
 	{
-		bool shouldSprint = Input.GetAxis("Sprint") > 0;
-		if (shouldSprint && stamina != null)
+		if (!PreventSprinting)
 		{
-			shouldSprint = stamina.Consume(staminaConsumption * Time.deltaTime);
-		}
+			bool shouldSprint = Input.GetAxis("Sprint") > 0;
+			if (shouldSprint && stamina != null)
+			{
+				shouldSprint = stamina.Consume(staminaConsumption * Time.deltaTime);
+			}
 
-		if (shouldSprint != sprinting)
+			if (shouldSprint != sprinting)
+			{
+				sprinting = shouldSprint;
+				if (shouldSprint)
+				{
+					mover.SetMoveStats(sprintStats);
+				}
+				else
+				{
+					mover.ResetMoveStats();
+				}
+			}
+		}
+		else
 		{
-			sprinting = shouldSprint;
-			if (shouldSprint)
-			{
-				mover.SetMoveStats(sprintStats);
-			}
-			else
-			{
-				mover.ResetMoveStats();
-			}
+			sprinting = false;
 		}
 	}
 }

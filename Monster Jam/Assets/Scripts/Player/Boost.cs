@@ -9,6 +9,8 @@ public class Boost : MonoBehaviour
 	private InventoryManager inventory = null;
 	[SerializeField]
 	private Stamina stamina = null;
+	[SerializeField]
+	private Sprint sprint = null;
 
 	private bool boosting = false;
 
@@ -36,6 +38,10 @@ public class Boost : MonoBehaviour
 		if (shouldBoost)
 		{
 			boosting = true;
+			if (sprint != null)
+			{
+				sprint.PreventSprinting = true;
+			}
 			mover.SetMoveStats(boostStats);
 			boostRemaining = boostDuration;
 			if (stamina != null)
@@ -72,6 +78,10 @@ public class Boost : MonoBehaviour
 		if (boosting)
 		{
 			boosting = false;
+			if (sprint != null)
+			{
+				sprint.PreventSprinting = false;
+			}
 			boostCooldownRemaining = boostCooldown;
 			mover.ResetMoveStats();
 		}

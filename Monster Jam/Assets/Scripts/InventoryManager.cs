@@ -27,8 +27,6 @@ public class InventoryManager : MonoBehaviour
     {
         ++counts[item];
         ++Version;
-
-        Debug.Log($"{item.ToString()} now at {counts[item]}");
     }
 
     public int GetCount(ItemType type)
