@@ -9,33 +9,15 @@ public class InventoryManager : MonoBehaviour
         CandyCorn
     }
 
-	class ItemEjection
-	{
-		public InventoryItem item;
-		public Vector3 ejection;
-		public int collectDelayRemaining;
-	}
-
 	public ulong Version = 0;
 
     private Dictionary<ItemType, List<InventoryItem>> items;
 
 	[SerializeField]
 	Transform itemContainer = null;
+	[SerializeField]
+	InventoryEjector ejector = null;
 	Transform player = null;
-
-	[Header("Item Ejection")]
-	[SerializeField]
-	int ejectCollectFrameDelay = 10;
-	[SerializeField]
-	float ejectDestroyDelay = 5f;
-	[SerializeField]
-	float ejectMinSpeed = 5f;
-	[SerializeField]
-	float ejectMaxSpeed = 10f;
-	[SerializeField]
-	float ejectDrag = 0.95f;
-	List<ItemEjection> ejections;
 
 	// Start is called before the first frame update
 	void Start()
@@ -46,8 +28,6 @@ public class InventoryManager : MonoBehaviour
             { ItemType.CandyCorn, new List<InventoryItem>() }
         };
 
-		ejections = new List<ItemEjection>();
-
 		if (itemContainer = null)
 		{
 			itemContainer = transform;
@@ -56,29 +36,7 @@ public class InventoryManager : MonoBehaviour
 		player = GameObject.FindWithTag("Player").transform;
 	}
 
-	private void Update()
-	{
-		for(int i = 0; i < ejections.Count; i++)
-		{
-			if (ejections[i].item != null)
-			{
-				var ejection = ejections[i];
-				ejection.item.transform.position += ejection.ejection * Time.deltaTime;
-				ejection.collectDelayRemaining--;
-				if (ejection.collectDelayRemaining <= 0)
-				{
-					ejection.collectDelayRemaining = 0;
-					ejection.item.PickupCollider.enabled = true;
-				}
-				ejection.ejection *= ejectDrag;
-			}
-			else
-			{
-				ejections.RemoveAt(i);
-				i--;
-			}
-		}
-	}
+
 
 	public void PickUp(InventoryItem item)
 	{
@@ -88,13 +46,9 @@ public class InventoryManager : MonoBehaviour
 		item.transform.parent = itemContainer;
 		items[item.ItemType].Add(item);
 
-		for (int i = 0; i < ejections.Count; i++)
+		if (ejector != null)
 		{
-			if (ejections[i].item)
-			{
-				ejections.RemoveAt(i);
-				i--;
-			}
+			ejector.RemoveUnwantedItems(item);
 		}
 	}
 
@@ -124,35 +78,22 @@ public class InventoryManager : MonoBehaviour
 		{
 			while(itemCategory.Value.Count > 0)
 			{
-				EjectFromTransform(itemCategory.Value[0], player, true);
+				if (ejector != null)
+				{
+					ejector.EjectFromTransform(itemCategory.Value[0], player, true);
+				}
+				else
+				{
+					itemCategory.Value[0].Event_Destroy();
+				}
+				itemCategory.Value.RemoveAt(0);
 			}
 		}
 
 		return true;
 	}
 
-	public void EjectFromTransform(InventoryItem item, Transform source, bool destroyAfter)
-	{
-		items[item.ItemType].Remove(item);
 
-		var direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-		var speed = Random.Range(ejectMinSpeed, ejectMaxSpeed);
-		ejections.Add(new ItemEjection()
-		{
-			item = item,
-			ejection = direction * speed,
-			collectDelayRemaining = ejectCollectFrameDelay
-		});
-
-		item.transform.position = source.position;
-		item.Event_ToggleVisibility(true);
-		item.PickupCollider.enabled = false;
-
-		if (destroyAfter)
-		{
-			item.Event_DestroyOnDelay(ejectDestroyDelay);
-		}
-	}
 
 	public bool UseItem(ItemType item)
     {
@@ -160,9 +101,9 @@ public class InventoryManager : MonoBehaviour
         {
             if (typedItems.Count > 0)
             {
-				var removedItem = typedItems[typedItems.Count - 1];
+				var removedItem = typedItems[0];
 				removedItem.Event_Destroy();
-				typedItems.RemoveAt(typedItems.Count - 1);
+				typedItems.RemoveAt(0);
                 ++Version;
                 return true;
             }
