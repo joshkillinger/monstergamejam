@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3665553833409811191}
   - component: {fileID: 96732859809531450}
   - component: {fileID: 96732859809531448}
-  - component: {fileID: 2616804283572414839}
+  - component: {fileID: 1270277127}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,14 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0589e62f4244479b1b588ee37baed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxis: {x: 1, y: 0, z: 0}
-  verticalAxis: {x: 0, y: 0, z: 1}
+  plane: 1
+  moveType: 1
   defaultStats:
     maxSpeed: 10
     acceleration: 100
-    turnSpeed: 15
+    turnSpeed: 12
     dragFactor: 0.6
---- !u!114 &2616804283572414839
+--- !u!114 &1270277127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,11 +171,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4907411879461207385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ee4462a9a714442986f7ca782eb26d, type: 3}
+  m_Script: {fileID: 11500000, guid: 015645cdee0d9c943a4368eff879d265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprintStats:
     maxSpeed: 20
-    acceleration: 200
+    acceleration: 300
     turnSpeed: 10
     dragFactor: 0.8

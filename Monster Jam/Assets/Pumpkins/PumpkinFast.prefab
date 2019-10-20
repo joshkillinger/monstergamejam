@@ -120,6 +120,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1825282039715451095, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff56dfcf01e65104581b43d522c426cf, type: 3}
 --- !u!1 &1795804428941960860 stripped
@@ -128,78 +133,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5683890901694399170}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &171826023363200923 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5513336622582236505, guid: ff56dfcf01e65104581b43d522c426cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 5683890901694399170}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8125350131391274499
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 171826023363200923}
-    m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_Name
-      value: PumpkinFast
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 020774398ac519e48801257ced2fed6b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 020774398ac519e48801257ced2fed6b, type: 3}

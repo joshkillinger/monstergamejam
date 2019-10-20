@@ -5,11 +5,25 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
+	enum MovementPlane
+	{
+		XY,
+		XZ
+	}
+
+	enum MovementType
+	{
+		ScreenWalk,
+		CharacterSteer
+	}
+
 	Rigidbody body = null;
 	PlayerAnimator anim = null;
 	[SerializeField]
-	Vector3 horizontalAxis = Vector3.right;
+	MovementPlane plane = MovementPlane.XY;
 	[SerializeField]
+	MovementType moveType = MovementType.ScreenWalk;
+	Vector3 horizontalAxis = Vector3.right;
 	Vector3 verticalAxis = Vector3.up;
 	Vector3 rotationAxis = Vector3.forward;
 	[SerializeField]
@@ -24,14 +38,24 @@ public class PlayerMover : MonoBehaviour
 		body = GetComponent<Rigidbody>();
 		anim = GetComponent<PlayerAnimator>();
 
-		rotationAxis = Vector3.Cross(horizontalAxis, verticalAxis);
 		stats = defaultStats;
+
+		switch (plane)
+		{
+			case MovementPlane.XY:
+				horizontalAxis = Vector3.right;
+				verticalAxis = Vector3.up;
+				break;
+			case MovementPlane.XZ:
+				horizontalAxis = Vector3.right;
+				verticalAxis = Vector3.forward;
+				break;
+		}
+		rotationAxis = Vector3.Cross(horizontalAxis, verticalAxis);
 	}
 
 	private void FixedUpdate()
 	{
-		rotationAxis = Vector3.Cross(horizontalAxis, verticalAxis);
-
 		var horizontal = Input.GetAxis($"Horizontal");
 		var vertical = Input.GetAxis($"Vertical");
 
@@ -61,7 +85,24 @@ public class PlayerMover : MonoBehaviour
 
 		body.AddForce(externalForce, ForceMode.Impulse);
 
-		var internalForce = (((horizontalAxis * horizontal) + (verticalAxis * vertical))).normalized * stats.acceleration;
+		var internalForce = Vector3.zero;
+		switch (moveType)
+		{
+			case MovementType.ScreenWalk:
+				internalForce = (((horizontalAxis * horizontal) + (verticalAxis * vertical))).normalized * stats.acceleration;
+				break;
+			case MovementType.CharacterSteer:
+				switch (plane)
+				{
+					case MovementPlane.XY:
+						internalForce = (((transform.right * horizontal) + (transform.up * vertical))).normalized * stats.acceleration;
+						break;
+					case MovementPlane.XZ:
+						internalForce = (((transform.right * horizontal) + (transform.forward * vertical))).normalized * stats.acceleration;
+						break;
+				}
+				break;
+		}
 
 		if (internalForce.sqrMagnitude > 0)
 		{
@@ -81,19 +122,34 @@ public class PlayerMover : MonoBehaviour
 			body.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), stats.turnSpeed);
 		}
 
-		body.AddForce(internalForce);
+		if (AttempingMoveForward(horizontal, vertical))
+		{
+			body.AddForce(internalForce);
+		}
 
 		if (body.velocity.sqrMagnitude > (stats.maxSpeed * stats.maxSpeed))
 		{
 			body.velocity = body.velocity.normalized * stats.maxSpeed;
 		}
 
-		if ((internalForce.sqrMagnitude + externalForce.sqrMagnitude) < Helper.Epsilon)
+		if (!AttempingMoveForward(horizontal, vertical) && externalForce.sqrMagnitude < Helper.Epsilon)
 		{
 			body.velocity *= stats.dragFactor;
 		}
 
 		externalForce = Vector3.zero;
+	}
+
+	bool AttempingMoveForward(float horizontal, float vertical)
+	{
+		switch (moveType)
+		{
+			case MovementType.ScreenWalk:
+				return Mathf.Abs(horizontal) > Helper.Epsilon || Mathf.Abs(vertical) > Helper.Epsilon;
+			case MovementType.CharacterSteer:
+				return vertical > Helper.Epsilon;
+		}
+		return false;
 	}
 
 	public void ApplyExternalForce(Vector3 force)
