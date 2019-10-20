@@ -6,6 +6,7 @@ using UnityEngine;
 public class Boost : MonoBehaviour
 {
 	private PlayerMover mover = null;
+	private InventoryManager inventory = null;
 	[SerializeField]
 	private Stamina stamina = null;
 
@@ -23,13 +24,14 @@ public class Boost : MonoBehaviour
 	private void Start()
 	{
 		mover = GetComponent<PlayerMover>();
+		inventory = GameObject.FindWithTag("GameController").GetComponentInChildren<InventoryManager>();
 	}
 
 	private void Update()
 	{
 		UpdateTimers();
 
-		bool shouldBoost = Input.GetAxis("Boost") > 0 && CanBoost();
+		bool shouldBoost = Input.GetAxis("Boost") > 0 && AttemptBoost();
 
 		if (shouldBoost)
 		{
@@ -43,10 +45,9 @@ public class Boost : MonoBehaviour
 		}
 	}
 
-	private bool CanBoost()
+	private bool AttemptBoost()
 	{
-		// TODO Need resources
-		return boostRemaining <= 0 && boostCooldownRemaining <= 0;
+		return boostRemaining <= 0 && boostCooldownRemaining <= 0 && inventory.UseItem(InventoryManager.ItemType.CandyCorn);
 	}
 
 	private void UpdateTimers()
