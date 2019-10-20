@@ -10,7 +10,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"parallaxOffset\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"56d42f31-2009-4621-bf38-805229f636ed\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_D569828E\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": -0.00009999999747378752,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": -0.00009999999747378752,\n        \"y\": -0.0006000000284984708\n    },\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"parallaxOffset\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"56d42f31-2009-4621-bf38-805229f636ed\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_D569828E\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": -0.00009999999747378752,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": -0.00009999999747378752,\n        \"y\": -0.00009999999747378752\n    },\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
