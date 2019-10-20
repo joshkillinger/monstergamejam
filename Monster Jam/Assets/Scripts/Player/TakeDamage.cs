@@ -40,6 +40,7 @@ public class TakeDamage : MonoBehaviour
 
 	public void Die()
 	{
-		Destroy(gameObject);
+		GameObject.FindWithTag("GameController").GetComponentInChildren<GameOverManager>().GameOver();
+		gameObject.SetActive(false);
 	}
 }

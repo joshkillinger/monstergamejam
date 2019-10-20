@@ -23,18 +23,21 @@ public class Stun : MonoBehaviour
 
 	public void StartStun(float duration)
 	{
-		if (stunRoutine != null)
+		if (isActiveAndEnabled)
 		{
-			StopCoroutine(stunRoutine);
-		}
-		stunRoutine = StartCoroutine(stunAndWait(duration));
-
-		var childStuns = GetComponentsInChildren<Stun>();
-		foreach (var child in childStuns)
-		{
-			if (child != this)
+			if (stunRoutine != null)
 			{
-				child.StartStun(duration);
+				StopCoroutine(stunRoutine);
+			}
+			stunRoutine = StartCoroutine(stunAndWait(duration));
+
+			var childStuns = GetComponentsInChildren<Stun>();
+			foreach (var child in childStuns)
+			{
+				if (child != this)
+				{
+					child.StartStun(duration);
+				}
 			}
 		}
 	}
