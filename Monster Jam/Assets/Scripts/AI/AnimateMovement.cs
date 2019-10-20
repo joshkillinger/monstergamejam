@@ -24,6 +24,12 @@ public class AnimateMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+    private void OnDisable()
+    {
+        turning = false;
+        moving = false;
+    }
+
     public bool turning = false;
     public IEnumerator Turn(float targetAngle)
     {
