@@ -20,7 +20,8 @@ public class HomeHinter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var y = (player.position - home.position).y;
-        rect.localRotation = Quaternion.Euler(0, 0, y);
+        var toHome = (home.position - player.position).normalized;
+        var angle = Vector3.SignedAngle(Vector3.forward, toHome, Vector3.up);
+        rect.rotation = Quaternion.Euler(0, 0, -angle);
     }
 }
