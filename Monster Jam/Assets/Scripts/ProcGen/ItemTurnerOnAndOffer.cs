@@ -36,6 +36,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
 
     protected void Update()
     {
+        removeNulls();
         decideToTurnOffStuff();
     }
 
@@ -67,6 +68,44 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
             turnOnOrOffObject(obj);
         }
 
+    }
+
+    protected void removeNulls()
+    {
+        for (int i = tileInstances.Count - 1; i >= 0; i--)
+        {
+            for(int j = tileInstances[i].Count - 1; j >= 0; j--)
+            {
+                if(tileInstances[i][j] == null)
+                {
+                    tileInstances[i].RemoveAt(j);
+                }
+            }
+        }
+
+        for (int i = itemInstances.Count - 1; i >= 0; i--)
+        {
+            if(itemInstances[i] == null)
+            {
+                itemInstances.RemoveAt(i);
+            }
+        }
+
+        for(int i = enemyInstances.Count - 1; i >= 0; i--)
+        {
+            if(enemyInstances[i] == null)
+            {
+                enemyInstances.RemoveAt(i);
+            }
+        }
+
+        for(int i = fenceInstances.Count - 1; i >= 0; i--)
+        {
+            if(fenceInstances[i] == null)
+            {
+                fenceInstances.RemoveAt(i);
+            }
+        }
     }
 
     protected void turnOnOrOffObject(GameObject obj)
