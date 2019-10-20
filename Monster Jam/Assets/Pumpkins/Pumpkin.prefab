@@ -400,7 +400,7 @@ MonoBehaviour:
   TurnTrigger: Turn
   TurnTime: 0.5
   MoveTime: 0.75
-  MoveSpeed: 2
+  MoveSpeed: 4
   turning: 0
   moving: 0
 --- !u!114 &2188471410188216063
@@ -416,12 +416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTurnAngle: 90
-  AlertRange: 200
-  IdleUpdateRate: 1.5
-  PursuitRange: 100
-  AlertUpdateRate: 0.75
+  AlertRange: 500
+  IdleUpdateRate: 1
+  PursuitRange: 300
+  AlertUpdateRate: 0.5
   OutOfRangeRetries: 2
   MoveDelay: 0.2
+  PlayerKnockback: 10
+  PlayerStunDuration: 3
   AlertGizmoColor: {r: 0, g: 1, b: 0.14495587, a: 1}
   PursuitGizmoColor: {r: 1, g: 0.024376594, b: 0, a: 1}
 --- !u!1 &6615007766302169057
