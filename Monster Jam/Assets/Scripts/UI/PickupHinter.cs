@@ -66,6 +66,11 @@ public class PickupHinter : MonoBehaviour
 
         foreach (var item in items)
         {
+            if (item == null || item.transform == null)
+            {
+                continue;
+            }
+
             var dist = (item.transform.position - transform.position).sqrMagnitude;
             if (dist > minDistForHint && dist < maxDistForHint && dist < closestDist)
             {
