@@ -85,7 +85,19 @@ public class FastPumpkin : PumpkinController
         float dist = sqrDistToPlayer;
         do
         {
-            yield return moveAndTurn(angleToPlayer);
+            var vecToPlayer = (player.position - transform.position).normalized;
+            var y = transform.eulerAngles.y;
+            var angle = Mathf.Clamp(angleToPlayer, y - MaxTurnAngle, y + MaxTurnAngle);
+
+            if (Vector3.Dot(vecToPlayer, transform.forward) < 0)
+            {
+                //don't jump away from player, just turn
+                yield return turn(angle);
+            }
+            else
+            {
+                yield return moveAndTurn(angle);
+            }
             yield return new WaitForSeconds(MoveDelay);
 
             dist = sqrDistToPlayer;
