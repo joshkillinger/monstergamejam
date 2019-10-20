@@ -331,7 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a84c1f77aa64366a1b0070e59521b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: {fileID: 0}
   staminaReplenish: 0.3
 --- !u!114 &6033234079359422277
 MonoBehaviour:
@@ -400,7 +399,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 0
-  m_Color: {r: 0.69166076, g: 0.8192402, b: 0.9339623, a: 1}
+  m_Color: {r: 0.7137255, g: 0.654902, b: 0.83137256, a: 1}
   m_Intensity: 120
   m_Range: 100
   m_SpotAngle: 90
