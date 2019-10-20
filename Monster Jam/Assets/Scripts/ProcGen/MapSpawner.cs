@@ -232,7 +232,7 @@ public class MapSpawner : MonoBehaviour
                 MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
                 if (tile != null)
                 {
-                    if (tile.biome != Biome.fence)
+                    if (tile.biome == Biome.field) //Hack to make this only apply to the field for now
                     {
                         if (Random.Range(0f, 1f) > .9f)
                         {
