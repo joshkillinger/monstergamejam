@@ -198,6 +198,8 @@ public class MapSpawner : MonoBehaviour
                 }
             }
         }
+
+        playerInstance.GetComponentInChildren<PickupHinter>().SetItems(itemInstances);
     }
 
     protected void spawnScenery()
