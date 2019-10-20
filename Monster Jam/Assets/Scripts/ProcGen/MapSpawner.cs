@@ -10,9 +10,9 @@ public class MapSpawner : MonoBehaviour
     public List<SceneryProbabiltyDeterminer> sceneryStuff;
     public GameObject playerPrefab;
     public GameObject enemySpawner;
-    public GameObject cemeteryBiomeTile;
-    public GameObject pumpkinBiomeTile;
-    public GameObject fieldBiomeTile;
+    public List<GameObject> cemeteryBiomeTile;
+    public List<GameObject> pumpkinBiomeTile;
+    public List<GameObject> fieldBiomeTile;
     public GameObject homeBaseTile;
     public Transform mapOrigin;
     public GameObject vFenceTile;
@@ -155,19 +155,35 @@ public class MapSpawner : MonoBehaviour
                         float randomRoll = Random.Range(0, fieldProb + pumpkinProb + cemeteryProb);
                         if (randomRoll <= fieldProb)
                         {
-                            swapTile(i, j, fieldBiomeTile);
+                            swapTile(i, j, getTileFromBiome(Biome.field));
                         }
                         else if (randomRoll > fieldProb && randomRoll <= cemeteryProb + fieldProb)
                         {
-                            swapTile(i, j, cemeteryBiomeTile);
+                            swapTile(i, j, getTileFromBiome(Biome.cemetery));
                         }
                         else
                         {
-                            swapTile(i, j, pumpkinBiomeTile);
+                            swapTile(i, j, getTileFromBiome(Biome.pumpkin));
                         }
                     }
                 }
             }
+        }
+    }
+
+    protected GameObject getTileFromBiome(Biome biome)
+    {
+        if(biome == Biome.cemetery)
+        {
+            return cemeteryBiomeTile[Random.Range(0, cemeteryBiomeTile.Count)];
+        }
+        else if (biome == Biome.field)
+        {
+            return fieldBiomeTile[Random.Range(0, fieldBiomeTile.Count)];
+        }
+        else//pumpkin
+        {
+            return pumpkinBiomeTile[Random.Range(0, pumpkinBiomeTile.Count)];
         }
     }
 
