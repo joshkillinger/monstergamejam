@@ -106,8 +106,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7732329528308710039}
+  - {fileID: 7722504865769751683}
   m_Father: {fileID: 8114258590056018059}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6032981321698418678
 GameObject:
@@ -133,12 +134,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6032981321698418678}
-  m_LocalRotation: {x: 0.24479969, y: 0, z: 0, w: 0.9695737}
+  m_LocalRotation: {x: 0.24479969, y: -0, z: -0, w: 0.9695737}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8114258590056018059}
-  m_RootOrder: 0
+  m_Father: {fileID: 5513336622582236505}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 28.34, y: 0, z: 0}
 --- !u!108 &2047903726908094658
 Light:
@@ -212,7 +213,6 @@ GameObject:
   - component: {fileID: 4239441235171818244}
   - component: {fileID: 6987702861017666956}
   - component: {fileID: 8818678722033141697}
-  - component: {fileID: 6792162243513861828}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -231,7 +231,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7722504865769751683}
   - {fileID: 5513336622582236505}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -292,21 +291,3 @@ MonoBehaviour:
   MoveSpeed: 2
   turning: 0
   moving: 0
---- !u!114 &6792162243513861828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199985763815875678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a0e85bc8fc34546954aa710c897f1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxTurnAngle: 90
-  AlertRange: 100
-  IdleUpdateRate: 2
-  PursuitRange: 80
-  AlertUpdateRate: 1
-  outOfRangeRetries: 2
