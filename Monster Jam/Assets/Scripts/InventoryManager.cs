@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -30,6 +29,11 @@ public class InventoryManager : MonoBehaviour
         ++Version;
 
         Debug.Log($"{item.ToString()} now at {counts[item]}");
+    }
+
+    public int GetCount(ItemType type)
+    {
+        return counts[type];
     }
 
     public void PlayerDamaged()
