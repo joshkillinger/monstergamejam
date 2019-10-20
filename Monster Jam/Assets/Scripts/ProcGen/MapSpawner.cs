@@ -236,23 +236,39 @@ public class MapSpawner : MonoBehaviour
                     {
                         if (Random.Range(0f, 1f) > .9f)
                         {
-                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                            sceneryInstances.Add(obj);
+                            GameObject obj = getWeightedProbabilitySceneryItem(tile.biome);
+                            if (obj != null)
+                            {
+                                Instantiate(obj, tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                                sceneryInstances.Add(obj);
+                            }
                         }
                         if (Random.Range(0f, 1f) > .9f)
                         {
-                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                            sceneryInstances.Add(obj);
+                            GameObject obj = getWeightedProbabilitySceneryItem(tile.biome);
+                            if (obj != null)
+                            {
+                                Instantiate(obj, tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                                sceneryInstances.Add(obj);
+                            }
                         }
                         if (Random.Range(0f, 1f) > .9f)
                         {
-                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                            sceneryInstances.Add(obj);
+                            GameObject obj = getWeightedProbabilitySceneryItem(tile.biome);
+                            if (obj != null)
+                            {
+                                Instantiate(obj, tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                                sceneryInstances.Add(obj);
+                            }
                         }
                         if (Random.Range(0f, 1f) > .9f)
                         {
-                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                            sceneryInstances.Add(obj);
+                            GameObject obj = getWeightedProbabilitySceneryItem(tile.biome);
+                            if (obj != null)
+                            {
+                                Instantiate(obj, tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                                sceneryInstances.Add(obj);
+                            }
                         }
                     }
                 }
@@ -319,7 +335,7 @@ public class MapSpawner : MonoBehaviour
                 previousProbabilityTracker = probTracker;
             }
         }
-        return sceneryStuff[0].obj;
+        return null;
     }
 
     

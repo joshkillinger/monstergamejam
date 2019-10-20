@@ -277,6 +277,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
         type: 3}
+      propertyPath: cemeteryBiomeTile.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: pumpkinBiomeTile.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: fieldBiomeTile.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
       propertyPath: sceneryStuff.Array.data[1].fieldProb
       value: 1
       objectReference: {fileID: 0}
@@ -333,6 +348,60 @@ PrefabInstance:
       propertyPath: mapDimension.y
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: cemeteryBiomeTile.Array.data[0]
+      value: 
+      objectReference: {fileID: 4240738566474336762, guid: 804ba4192f6801948ba0526274363d31,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: cemeteryBiomeTile.Array.data[1]
+      value: 
+      objectReference: {fileID: 5603604853879463530, guid: f194dfc69c28c234eaf221dce67d3b92,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: cemeteryBiomeTile.Array.data[2]
+      value: 
+      objectReference: {fileID: 3579383636152340876, guid: a7738f15b231b3843be4c6f54bec2075,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: pumpkinBiomeTile.Array.data[0]
+      value: 
+      objectReference: {fileID: 8500281125065973499, guid: f914f06cff1aa2f478dc56bdf3a15f16,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: pumpkinBiomeTile.Array.data[1]
+      value: 
+      objectReference: {fileID: 547538451931205614, guid: aec384ced93ad1c43b96417b2d90da82,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: pumpkinBiomeTile.Array.data[2]
+      value: 
+      objectReference: {fileID: 7714734430202732051, guid: 5f184d47528408c4ca370e367f25e70c,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: fieldBiomeTile.Array.data[0]
+      value: 
+      objectReference: {fileID: 7114852384665957915, guid: 7473b94a14263bf47aa7951866021962,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: fieldBiomeTile.Array.data[1]
+      value: 
+      objectReference: {fileID: 7616246683561669719, guid: 1809b62e52246fd41b5083af78b2f049,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: fieldBiomeTile.Array.data[2]
+      value: 
+      objectReference: {fileID: 4060100962458953948, guid: 229ec2d93e4226d429484e6e8541b3bf,
+        type: 3}
     - target: {fileID: 6406266215149303589, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
         type: 3}
       propertyPath: m_LocalPosition.x
