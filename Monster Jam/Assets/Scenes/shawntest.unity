@@ -380,6 +380,8 @@ MonoBehaviour:
     type: 3}
   cornerFenceTileSE: {fileID: 726781472510297093, guid: ea8e54eb46957274c8f1e92d58b1c784,
     type: 3}
+  fenceObject: {fileID: 621593496382883196, guid: d2ab76b9e7d1c36458e650ee6961b514,
+    type: 3}
 --- !u!4 &1707751806
 Transform:
   m_ObjectHideFlags: 0

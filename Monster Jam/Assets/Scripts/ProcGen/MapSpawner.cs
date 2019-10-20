@@ -18,6 +18,7 @@ public class MapSpawner : MonoBehaviour
     public GameObject cornerFenceTileNE;
     public GameObject cornerFenceTileNW;
     public GameObject cornerFenceTileSE;
+    public GameObject fenceObject;
 
     private Vector2Int tileDimension;
     private List<List<GameObject>> tileInstances;
@@ -39,6 +40,7 @@ public class MapSpawner : MonoBehaviour
         for (int i = 0; i < biomeWeightingPasses; i++) {
             biomeWeightingPass();
         }
+        spawnFences();
         
     }
 
@@ -93,52 +95,55 @@ public class MapSpawner : MonoBehaviour
             {
                 GameObject obj = tileInstances[i][j];
                 MapTile tile = obj.GetComponent<MapTile>();
-                Biome biome = tile.biome;
-                if (biome != Biome.fence)
+                if (tile != null)
                 {
-                    List<MapTile> adjacentTiles = getAdjacentTiles(i, j);
-                    float fieldProb = 0f;
-                    float pumpkinProb = 0f;
-                    float cemeteryProb = 0f;
-                    foreach (MapTile t in adjacentTiles)
+                    Biome biome = tile.biome;
+                    if (biome != Biome.fence)
                     {
-                        if (t.biome == Biome.field)
+                        List<MapTile> adjacentTiles = getAdjacentTiles(i, j);
+                        float fieldProb = 0f;
+                        float pumpkinProb = 0f;
+                        float cemeteryProb = 0f;
+                        foreach (MapTile t in adjacentTiles)
+                        {
+                            if (t.biome == Biome.field)
+                            {
+                                fieldProb += .20f;
+                            }
+                            else if (t.biome == Biome.pumpkin)
+                            {
+                                pumpkinProb += .20f;
+                            }
+                            else if (t.biome == Biome.cemetery)
+                            {
+                                cemeteryProb += .20f;
+                            }
+                        }
+                        if (tile.biome == Biome.field)
                         {
                             fieldProb += .20f;
                         }
-                        else if (t.biome == Biome.pumpkin)
-                        {
-                            pumpkinProb += .20f;
-                        }
-                        else if (t.biome == Biome.cemetery)
+                        else if (tile.biome == Biome.cemetery)
                         {
                             cemeteryProb += .20f;
                         }
-                    }
-                    if (tile.biome == Biome.field)
-                    {
-                        fieldProb += .20f;
-                    }
-                    else if (tile.biome == Biome.cemetery)
-                    {
-                        cemeteryProb += .20f;
-                    }
-                    else if (tile.biome == Biome.pumpkin)
-                    {
-                        pumpkinProb += .20f;
-                    }
-                    float randomRoll = Random.Range(0, fieldProb + pumpkinProb + cemeteryProb);
-                    if (randomRoll <= fieldProb)
-                    {
-                        swapTile(i, j, fieldBiomeTile);
-                    }
-                    else if( randomRoll > fieldProb && randomRoll <= cemeteryProb + fieldProb)
-                    {
-                        swapTile(i, j, cemeteryBiomeTile);
-                    }
-                    else
-                    {
-                        swapTile(i, j, pumpkinBiomeTile);
+                        else if (tile.biome == Biome.pumpkin)
+                        {
+                            pumpkinProb += .20f;
+                        }
+                        float randomRoll = Random.Range(0, fieldProb + pumpkinProb + cemeteryProb);
+                        if (randomRoll <= fieldProb)
+                        {
+                            swapTile(i, j, fieldBiomeTile);
+                        }
+                        else if (randomRoll > fieldProb && randomRoll <= cemeteryProb + fieldProb)
+                        {
+                            swapTile(i, j, cemeteryBiomeTile);
+                        }
+                        else
+                        {
+                            swapTile(i, j, pumpkinBiomeTile);
+                        }
                     }
                 }
             }
@@ -152,6 +157,7 @@ public class MapSpawner : MonoBehaviour
         Destroy(oldTile);
     }
 
+ 
     protected List<MapTile> getAdjacentTiles(int x, int y)
     {
         List<MapTile> adjacentTiles = new List<MapTile>();
@@ -188,6 +194,54 @@ public class MapSpawner : MonoBehaviour
             }
         }
         return adjacentTiles;
+    }
+
+    protected void spawnFences()
+    {
+        for (int i = 0; i < mapDimension.x; i++)
+        {
+            for (int j = 0; j < mapDimension.y; j++)
+            {
+                MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
+                if(tile != null)
+                {
+                    if(i > 0)
+                    {
+                        MapTile otherTile = tileInstances[i - 1][j].GetComponent<MapTile>();
+                        if(otherTile != null)
+                        {
+                            if(otherTile.biome != tile.biome)
+                            {
+                                makeFenceBetween(tile, otherTile, true);
+                            }
+                        }
+                    }
+                    if (j > 0)
+                    {
+                        MapTile otherTile = tileInstances[i][j - 1].GetComponent<MapTile>();
+                        if (otherTile != null)
+                        {
+                            if (otherTile.biome != tile.biome)
+                            {
+                                makeFenceBetween(tile, otherTile, false);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    protected void makeFenceBetween(MapTile tile1, MapTile tile2, bool vertical)
+    {
+        Vector3 tile1Pos = tile1.gameObject.transform.position;
+        Vector3 tile2Pos = tile2.gameObject.transform.position;
+        if(Random.Range(0f, 1f) < .8f) {
+            if (vertical)
+                Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation);
+            else
+                Instantiate(fenceObject, (tile1Pos + tile2Pos) / 2f + new Vector3(10f, 0f, 10f) /* 👽 ayy lmao */, fenceObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+        }
     }
 
     protected GameObject getStraightUpRandomTile()
