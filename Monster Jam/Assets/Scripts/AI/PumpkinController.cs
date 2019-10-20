@@ -56,6 +56,12 @@ public class PumpkinController : MonoBehaviour
     {
         yield return new WaitForSeconds(IdleUpdateRate);
 
+        if (player == null)
+        {
+            StopAllCoroutines();
+            yield break;
+        }
+
         if (sqrDistToPlayer < AlertRange)
         {
             nextState = alert();
@@ -88,6 +94,12 @@ public class PumpkinController : MonoBehaviour
         while (outOfRangeTries < OutOfRangeRetries)
         {
             yield return new WaitForSeconds(AlertUpdateRate);
+
+            if (player == null)
+            {
+                StopAllCoroutines();
+                yield break;
+            }
 
             var dist = sqrDistToPlayer;
             if (dist < PursuitRange)
@@ -139,6 +151,12 @@ public class PumpkinController : MonoBehaviour
                 yield return moveAndTurn(angle);
             }
             yield return new WaitForSeconds(MoveDelay);
+
+            if (player == null)
+            {
+                StopAllCoroutines();
+                yield break;
+            }
 
             dist = sqrDistToPlayer;
         } while (dist < PursuitRange);
