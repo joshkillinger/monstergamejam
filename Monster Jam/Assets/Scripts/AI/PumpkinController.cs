@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AnimateMovement))]
-public abstract class PumpkinController : MonoBehaviour
+public class PumpkinController : MonoBehaviour
 {
     AnimateMovement animate; 
 
@@ -13,10 +13,13 @@ public abstract class PumpkinController : MonoBehaviour
     public float PursuitRange = 60;
     public float AlertUpdateRate = 1;
 
+    public float OutOfRangeRetries = 2;
+    public float MoveDelay = .3f;
+
     public Color AlertGizmoColor = Color.magenta;
     public Color PursuitGizmoColor = Color.magenta;
 
-    protected Transform player;
+    private Transform player;
 
     void Start()
     {
@@ -37,52 +40,130 @@ public abstract class PumpkinController : MonoBehaviour
     }
 #endif
 
-    protected float sqrDistToPlayer => Vector3.SqrMagnitude(player.position - transform.position);
+    private float sqrDistToPlayer => Vector3.SqrMagnitude(player.position - transform.position);
 
     private IEnumerator aiLoop()
     {
         while (true)
         {
             yield return nextState;
-            Debug.Log("Running next state");
         }
     }
 
-    protected IEnumerator nextState;
+    private IEnumerator nextState;
 
-    protected virtual IEnumerator idle()
+    private IEnumerator idle()
     {
         yield return new WaitForSeconds(IdleUpdateRate);
+
+        if (sqrDistToPlayer < AlertRange)
+        {
+            nextState = alert();
+        }
+        else
+        {
+            float rand = Random.value;
+            //wander forward
+            if (rand < .2)
+            {
+                yield return move();
+            }
+            //wander turn
+            else if (rand < .5)
+            {
+                var targetAngle = transform.eulerAngles.y;
+                targetAngle += (float)((Random.value - .5) * MaxTurnAngle);
+                yield return turn(targetAngle);
+            }
+            //else stay
+
+            nextState = idle();
+        }
     }
 
-    protected virtual IEnumerator alert()
+    private IEnumerator alert()
     {
-        yield return new WaitForSeconds(AlertUpdateRate);
+        int outOfRangeTries = 0;
+
+        while (outOfRangeTries < OutOfRangeRetries)
+        {
+            yield return new WaitForSeconds(AlertUpdateRate);
+
+            var dist = sqrDistToPlayer;
+            if (dist < PursuitRange)
+            {
+                nextState = pursuit();
+                yield break;
+            }
+            else
+            {
+                //look toward player
+                var angle = angleToPlayer;
+                var y = transform.eulerAngles.y;
+
+                if (Mathf.Abs(y - angle) > .1)
+                {
+                    yield return turn(Mathf.Clamp(angle, y - MaxTurnAngle, y + MaxTurnAngle));
+                }
+
+                if (dist > AlertRange)
+                {
+                    ++outOfRangeTries;
+                }
+                else
+                {
+                    outOfRangeTries = 0;
+                }
+            }
+        }
+
+        nextState = idle();
     }
 
-    protected virtual IEnumerator pursuit() { yield return null; }
-
-    protected virtual IEnumerator attack() { yield return null; }
-
-    protected virtual IEnumerator turn(float targetAngle)
+    private IEnumerator pursuit()
     {
-        Debug.Log("turn");
+        float dist = sqrDistToPlayer;
+        do
+        {
+            var vecToPlayer = (player.position - transform.position).normalized;
+            var y = transform.eulerAngles.y;
+            var angle = Mathf.Clamp(angleToPlayer, y - MaxTurnAngle, y + MaxTurnAngle);
+
+            if (Vector3.Dot(vecToPlayer, transform.forward) < 0)
+            {
+                //don't jump away from player, just turn
+                yield return turn(angle);
+            }
+            else
+            {
+                yield return moveAndTurn(angle);
+            }
+            yield return new WaitForSeconds(MoveDelay);
+
+            dist = sqrDistToPlayer;
+        } while (dist < PursuitRange);
+
+        nextState = alert();
+    }
+
+    private IEnumerator attack() { yield return null; }
+
+    private IEnumerator turn(float targetAngle)
+    {
         yield return animate.Turn(targetAngle);
     }
 
-    protected virtual IEnumerator move()
+    private IEnumerator move()
     {
-        Debug.Log("move");
         yield return animate.Move();
     }
 
-    protected virtual IEnumerator moveAndTurn(float targetAngle)
+    private IEnumerator moveAndTurn(float targetAngle)
     {
-        Debug.Log("move and turn");
         yield return animate.MoveAndTurn(targetAngle);
     }
 
-    protected float angleToPlayer
+    private float angleToPlayer
     {
         get
         {
