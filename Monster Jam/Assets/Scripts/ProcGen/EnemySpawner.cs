@@ -20,13 +20,13 @@ public class EnemySpawner : MonoBehaviour
     {
         if(Random.Range(0f, 1f) > .5f)
         {
-            GameObject obj = Instantiate(enemyPrefab1, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(enemyPrefab1, transform.position, Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
             enemyInstances.Add(obj);
             itemTurnerOnAndOffer.addEnemyInstance(obj);
         }
         else
         {
-            GameObject obj = Instantiate(enemyPrefab2, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(enemyPrefab2, transform.position, Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
             enemyInstances.Add(obj);
             itemTurnerOnAndOffer.addEnemyInstance(obj);
         }
