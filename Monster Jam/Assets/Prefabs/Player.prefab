@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 96732859809531450}
   - component: {fileID: 96732859809531448}
   - component: {fileID: 1270277127}
+  - component: {fileID: 371633263}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -179,3 +180,17 @@ MonoBehaviour:
     acceleration: 300
     turnSpeed: 10
     dragFactor: 0.8
+  stamina: {fileID: 371633263}
+  staminaConsumption: 0.3
+--- !u!114 &371633263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907411879461207385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289f4587da2cc42888d1c83046e9d19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
