@@ -92,6 +92,8 @@ public class AnimateMovement : MonoBehaviour
         moving = true;
         turning = true;
 
+        animator.SetTrigger(MoveTrigger);
+
         float startY = Helper.ClampAngle(transform.eulerAngles.y);
         float endTime = Time.time + MoveTime;
         Vector3 cachedForward = transform.forward;
