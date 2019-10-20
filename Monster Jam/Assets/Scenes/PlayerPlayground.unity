@@ -120,6 +120,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &22553970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7321614655550258758, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_Name
+      value: PumpkinSeedPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 153
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12035c9988317234aa3c5e687316343b, type: 3}
 --- !u!1001 &334373256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,6 +500,144 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &857334780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7321614655550258758, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_Name
+      value: PumpkinSeedPowerUp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12035c9988317234aa3c5e687316343b, type: 3}
+--- !u!1001 &916456227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7321614655550258758, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_Name
+      value: PumpkinSeedPowerUp (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404212278283658822, guid: 12035c9988317234aa3c5e687316343b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12035c9988317234aa3c5e687316343b, type: 3}
 --- !u!4 &978366785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3665553833409811191, guid: c0956092eacaf4a2c803c521f493e851,

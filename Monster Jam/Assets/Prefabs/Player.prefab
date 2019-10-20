@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1270277127}
   - component: {fileID: 371633260}
   - component: {fileID: 3463494397613964531}
+  - component: {fileID: 2558217377661857333}
   - component: {fileID: 371633261}
   m_Layer: 0
   m_Name: Player
@@ -352,6 +353,20 @@ MonoBehaviour:
     forceForward: 1
   boostDuration: 5
   boostCooldown: 1
+--- !u!114 &2558217377661857333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907411879461207385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a84c1f77aa64366a1b0070e59521b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: {fileID: 371633263}
+  staminaReplenish: 0.3
 --- !u!65 &371633261
 BoxCollider:
   m_ObjectHideFlags: 0

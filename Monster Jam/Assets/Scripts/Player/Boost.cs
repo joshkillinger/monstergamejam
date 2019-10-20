@@ -40,14 +40,14 @@ public class Boost : MonoBehaviour
 			boostRemaining = boostDuration;
 			if (stamina != null)
 			{
-				stamina.Repenlish(1);
+				stamina.Replenish(1);
 			}
 		}
 	}
 
 	private bool AttemptBoost()
 	{
-		return boostRemaining <= 0 && boostCooldownRemaining <= 0 && inventory.UseItem(InventoryManager.ItemType.CandyCorn);
+		return !boosting && boostRemaining <= 0 && boostCooldownRemaining <= 0 && inventory.UseItem(InventoryManager.ItemType.CandyCorn);
 	}
 
 	private void UpdateTimers()
