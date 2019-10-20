@@ -257,14 +257,16 @@ public class MapSpawner : MonoBehaviour
             float sumOfProbs = 0;
             foreach(SceneryProbabiltyDeterminer spd in sceneryStuff) { sumOfProbs += spd.cemeteryProb; }
             float probTracker = 0;
+            float previousProbabilityTracker = 0;
             float roll = Random.Range(0f, sumOfProbs);
             for (int i = 0; i < sceneryStuff.Count; i++)
             {
                 probTracker += sceneryStuff[i].cemeteryProb;
-                if (probTracker > roll)
+                if (probTracker > roll && previousProbabilityTracker <= roll)
                 {
                     return sceneryStuff[i].obj;
                 }
+                previousProbabilityTracker = probTracker;
             }
         }
         else if(biome == Biome.field)
@@ -289,14 +291,16 @@ public class MapSpawner : MonoBehaviour
             float sumOfProbs = 0;
             foreach (SceneryProbabiltyDeterminer spd in sceneryStuff) { sumOfProbs += spd.pumpkinProb; }
             float probTracker = 0;
+            float previousProbabilityTracker = 0;
             float roll = Random.Range(0f, sumOfProbs);
             for (int i = 0; i < sceneryStuff.Count; i++)
             {
                 probTracker += sceneryStuff[i].pumpkinProb;
-                if (probTracker > roll)
+                if (probTracker > roll && previousProbabilityTracker <= roll)
                 {
                     return sceneryStuff[i].obj;
                 }
+                previousProbabilityTracker = probTracker;
             }
         }
         return sceneryStuff[0].obj;
