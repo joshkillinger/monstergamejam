@@ -8,7 +8,7 @@ public class StaminaRenderer : MonoBehaviour
 	Stamina stamina = null;
 
 	[SerializeField]
-	Text text;
+	Image fill = null;
 
 	private void Start()
 	{
@@ -19,9 +19,9 @@ public class StaminaRenderer : MonoBehaviour
 	{
 		if (stamina != null)
 		{
-			if (text != null)
+			if (fill != null)
 			{
-				text.text = "" + (int)(stamina.Total * 100);
+				fill.fillAmount = stamina.Total;
 			}
 		}
 	}
