@@ -29,7 +29,7 @@ public class MapSpawner : MonoBehaviour
             tileInstances.Add(new List<GameObject>());
         }
 
-        tileDimension = new Vector2Int(10, 10);
+        tileDimension = new Vector2Int(20, 20);
         spawnMap();
     }
 
