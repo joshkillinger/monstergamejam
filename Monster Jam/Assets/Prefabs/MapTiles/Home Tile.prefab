@@ -99,6 +99,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3568820322123788240, guid: fbbfa48a7d853a441b968d9edd546073,
+        type: 3}
+      propertyPath: biome
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1718387221987414298, guid: fbbfa48a7d853a441b968d9edd546073,
         type: 3}
       propertyPath: m_Name

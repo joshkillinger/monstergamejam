@@ -19,12 +19,16 @@ public class MapSpawner : MonoBehaviour
     public GameObject cornerFenceTileNW;
     public GameObject cornerFenceTileSE;
     public GameObject fenceObject;
+    public GameObject candyCorn;
+    public GameObject pumpkinSeed;
 
     private Vector2Int tileDimension;
     private List<List<GameObject>> tileInstances;
+    private List<GameObject> itemInstances; 
     protected void Awake()
     {
         tileInstances = new List<List<GameObject>>();
+        itemInstances = new List<GameObject>();
         for(int i = 0; i < mapDimension.x; i++)
         {
             tileInstances.Add(new List<GameObject>());
@@ -41,6 +45,7 @@ public class MapSpawner : MonoBehaviour
             biomeWeightingPass();
         }
         spawnFences();
+        spawnItems();
         
     }
 
@@ -157,6 +162,27 @@ public class MapSpawner : MonoBehaviour
         Destroy(oldTile);
     }
 
+    protected void spawnItems()
+    {
+        for (int i = 0; i < mapDimension.x; i++)
+        {
+            for (int j = 0; j < mapDimension.y; j++)
+            {
+                if(Random.Range(0f, 1f) > .6f)
+                {
+                    Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, 8f), 0f, Random.Range(1f, 8f));
+                    if(Random.Range(0f, 1f) > .8f)
+                    {
+                        itemInstances.Add(Instantiate(candyCorn, spawnPosition, Quaternion.identity));
+                    }
+                    else
+                    {
+                        itemInstances.Add(Instantiate(pumpkinSeed, spawnPosition, Quaternion.identity));
+                    }
+                }
+            }
+        }
+    }
  
     protected List<MapTile> getAdjacentTiles(int x, int y)
     {
@@ -210,7 +236,7 @@ public class MapSpawner : MonoBehaviour
                         MapTile otherTile = tileInstances[i - 1][j].GetComponent<MapTile>();
                         if(otherTile != null)
                         {
-                            if(otherTile.biome != tile.biome)
+                            if(otherTile.biome != tile.biome && otherTile.biome != Biome.fence && tile.biome != Biome.fence)
                             {
                                 makeFenceBetween(tile, otherTile, true);
                             }
@@ -221,7 +247,7 @@ public class MapSpawner : MonoBehaviour
                         MapTile otherTile = tileInstances[i][j - 1].GetComponent<MapTile>();
                         if (otherTile != null)
                         {
-                            if (otherTile.biome != tile.biome)
+                            if (otherTile.biome != tile.biome && otherTile.biome != Biome.fence && tile.biome != Biome.fence)
                             {
                                 makeFenceBetween(tile, otherTile, false);
                             }
