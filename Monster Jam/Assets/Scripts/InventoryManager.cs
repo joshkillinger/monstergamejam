@@ -93,8 +93,6 @@ public class InventoryManager : MonoBehaviour
 		return true;
 	}
 
-
-
 	public bool UseItem(ItemType item)
     {
         if (items.TryGetValue(item, out List<InventoryItem> typedItems))
@@ -110,4 +108,26 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+
+	public InventoryItem RemoveRandomItem()
+	{
+		List<List<InventoryItem>> validCategories = new List<List<InventoryItem>>();
+		foreach(var category in items)
+		{
+			if (category.Value.Count > 0)
+			{
+				validCategories.Add(category.Value);
+			}
+		}
+
+		if (validCategories.Count > 0)
+		{
+			var category = validCategories[Random.Range(0, validCategories.Count)];
+			var item = category[Random.Range(0, category.Count)];
+			category.Remove(item);
+			return item;
+		}
+
+		return null;
+	}
 }

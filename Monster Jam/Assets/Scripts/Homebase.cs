@@ -40,13 +40,14 @@ public class Homebase : MonoBehaviour
 			if (timeToScore <= 0)
 			{
 				timeToScore = scoreDelay;
-
+				var removedItem = inventory.RemoveRandomItem();
+				if (removedItem != null)
+				{
+					score.AddScore(removedItem.Points);
+					removedItem.Event_Destroy();
+				}
+				stamina.Replenish(staminaReplenishRate);
 			}
-
-			//var controller = GameObject.FindGameObjectWithTag("GameController");
-			//controller.GetComponent<InventoryManager>().PickUp(this);
-
-			//GetComponent<Animator>().SetTrigger(PickupTrigger);
 		}
 	}
 }
