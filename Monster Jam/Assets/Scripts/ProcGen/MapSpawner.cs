@@ -299,7 +299,7 @@ public class MapSpawner : MonoBehaviour
                 }
             }
         }
-        return null;
+        return sceneryStuff[0].obj;
     }
 
     
