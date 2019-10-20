@@ -110,12 +110,12 @@ public class PumpkinController : MonoBehaviour
             else
             {
                 //look toward player
-                var angle = angleToPlayer;
+                var angle = getTurnAngle();
                 var y = transform.eulerAngles.y;
 
                 if (Mathf.Abs(y - angle) > .1)
                 {
-                    yield return turn(Mathf.Clamp(angle, y - MaxTurnAngle, y + MaxTurnAngle));
+                    yield return turn(angle);
                 }
 
                 if (dist > AlertRange)
@@ -138,9 +138,8 @@ public class PumpkinController : MonoBehaviour
         do
         {
             var vecToPlayer = (player.position - transform.position).normalized;
-            var y = transform.eulerAngles.y;
-            var angle = Mathf.Clamp(angleToPlayer, y - MaxTurnAngle, y + MaxTurnAngle);
-
+            var angle = getTurnAngle();
+            Debug.Log($"Angle = {angle}");
             if (Vector3.Dot(vecToPlayer, transform.forward) < 0)
             {
                 //don't jump away from player, just turn
@@ -164,11 +163,26 @@ public class PumpkinController : MonoBehaviour
         nextState = alert();
     }
 
+    private float getTurnAngle()
+    {
+        var y = transform.eulerAngles.y;
+        var angle = angleToPlayer;
+
+        var angle1 = Mathf.Abs(angle - y);
+        var angle2 = Mathf.Abs(angle + 360 - y);
+        float sign = (angle1 > angle2) ? 1 : -1;
+        angle = (Mathf.Min(angle1, angle2) * sign) + y;
+
+        angle = Mathf.Clamp(angle, y - MaxTurnAngle, y + MaxTurnAngle);
+
+        return angle;
+    }
+
     private IEnumerator attack() { yield return null; }
 
     private IEnumerator turn(float targetAngle)
     {
-        yield return animate.Turn(targetAngle);
+        yield return animate.Turn(Helper.ClampAngle(targetAngle));
     }
 
     private IEnumerator move()
@@ -178,7 +192,7 @@ public class PumpkinController : MonoBehaviour
 
     private IEnumerator moveAndTurn(float targetAngle)
     {
-        yield return animate.MoveAndTurn(targetAngle);
+        yield return animate.MoveAndTurn(Helper.ClampAngle(targetAngle));
     }
 
     private float angleToPlayer
@@ -187,6 +201,7 @@ public class PumpkinController : MonoBehaviour
         {
             var toPlayer = (player.position - transform.position).normalized;
             return Vector3.SignedAngle(Vector3.forward, toPlayer, Vector3.up);
+
         }
     }
 
