@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,7 +33,6 @@ public class AnimateMovement : MonoBehaviour
             yield break;
         }
 
-        Debug.Log($"Turning to {targetAngle}");
         turning = true;
 
         animator.SetTrigger(TurnTrigger);
@@ -60,7 +60,6 @@ public class AnimateMovement : MonoBehaviour
             yield break;
         }
 
-        Debug.Log("Moving");
         moving = true;
 
         animator.SetTrigger(MoveTrigger);
@@ -74,5 +73,34 @@ public class AnimateMovement : MonoBehaviour
         }
 
         moving = false;
+    }
+
+    public IEnumerator MoveAndTurn(float targetAngle)
+    {
+        if (moving || turning)
+        {
+            Debug.LogError("Already moving or turning!", this);
+            yield break;
+        }
+
+        moving = true;
+        turning = true;
+
+        float startY = transform.eulerAngles.y;
+        float endTime = Time.time + MoveTime;
+        Vector3 cachedForward = transform.forward;
+        while (Time.time < endTime)
+        {
+            yield return null;
+
+            float lastY = transform.localEulerAngles.y;
+            var t = 1 - ((endTime - Time.time) / TurnTime);
+            float y = Mathf.LerpAngle(startY, targetAngle, t);
+            transform.Rotate(Vector3.up, y - lastY);
+            characterController.SimpleMove(cachedForward * MoveSpeed);
+        }
+
+        moving = false;
+        turning = false;
     }
 }

@@ -10,8 +10,11 @@ public abstract class PumpkinController : MonoBehaviour
 
     public float AlertRange = 100;
     public float IdleUpdateRate = 2;
-    public float PursuitRange = 80;
+    public float PursuitRange = 60;
     public float AlertUpdateRate = 1;
+
+    public Color AlertGizmoColor = Color.magenta;
+    public Color PursuitGizmoColor = Color.magenta;
 
     protected Transform player;
 
@@ -22,6 +25,17 @@ public abstract class PumpkinController : MonoBehaviour
         nextState = idle();
         StartCoroutine(aiLoop());
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = AlertGizmoColor;
+        Gizmos.DrawWireSphere(transform.position, Mathf.Sqrt(AlertRange));
+
+        Gizmos.color = PursuitGizmoColor;
+        Gizmos.DrawWireSphere(transform.position, Mathf.Sqrt(PursuitRange));
+    }
+#endif
 
     protected float sqrDistToPlayer => Vector3.SqrMagnitude(player.position - transform.position);
 
@@ -60,5 +74,20 @@ public abstract class PumpkinController : MonoBehaviour
     {
         Debug.Log("move");
         yield return animate.Move();
+    }
+
+    protected virtual IEnumerator moveAndTurn(float targetAngle)
+    {
+        Debug.Log("move and turn");
+        yield return animate.MoveAndTurn(targetAngle);
+    }
+
+    protected float angleToPlayer
+    {
+        get
+        {
+            var toPlayer = (player.position - transform.position).normalized;
+            return Vector3.SignedAngle(Vector3.forward, toPlayer, Vector3.up);
+        }
     }
 }

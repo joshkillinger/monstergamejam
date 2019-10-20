@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class FastPumpkin : PumpkinController
 {
-    public float outOfRangeRetries = 2;
+    public float OutOfRangeRetries = 2;
+    public float MoveDelay = .3f;
 
     protected override IEnumerator idle()
     {
@@ -28,10 +29,11 @@ public class FastPumpkin : PumpkinController
             else if (rand < .5)
             {
                 var targetAngle = transform.eulerAngles.y;
-                targetAngle += (float)((Random.value - .5) * (MaxTurnAngle * .5));
+                targetAngle += (float)((Random.value - .5) * MaxTurnAngle);
                 yield return turn(targetAngle);
             }
             //else stay
+
             nextState = idle();
         }
     }
@@ -41,24 +43,54 @@ public class FastPumpkin : PumpkinController
         Debug.Log("alert");
         int outOfRangeTries = 0;
 
-        while (outOfRangeTries < outOfRangeRetries)
+        while (outOfRangeTries < OutOfRangeRetries)
         {
             yield return base.alert();
+
+            Debug.Log($"SqrDist to player = {sqrDistToPlayer}");
 
             var dist = sqrDistToPlayer;
             if (dist < PursuitRange)
             {
                 nextState = pursuit();
-                break;
+                yield break;
             }
-            else if (dist > AlertRange)
+            else 
             {
-                ++outOfRangeTries;
-            }
-            else
-            {
-                outOfRangeTries = 0;
+                //look toward player
+                var angle = angleToPlayer;
+                var y = transform.eulerAngles.y;
+
+                if (Mathf.Abs(y - angle) > .1)
+                {
+                    yield return turn(Mathf.Clamp(angle, y - MaxTurnAngle, y + MaxTurnAngle));
+                }
+
+                if (dist > AlertRange)
+                {
+                    ++outOfRangeTries;
+                }
+                else
+                {
+                    outOfRangeTries = 0;
+                }
             }
         }
+
+        nextState = idle();
+    }
+
+    protected override IEnumerator pursuit()
+    {
+        float dist = sqrDistToPlayer;
+        do
+        {
+            yield return moveAndTurn(angleToPlayer);
+            yield return new WaitForSeconds(MoveDelay);
+
+            dist = sqrDistToPlayer;
+        } while (dist < PursuitRange);
+
+        nextState = alert();
     }
 }
