@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1241381320243192274}
   - component: {fileID: 1605559537697763980}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BogParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4763,7 +4763,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3cad01ef6c977154fbeabb267bed49e6,
         type: 3}
       propertyPath: m_Name
-      value: K_Bog
+      value: P_Bog
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3cad01ef6c977154fbeabb267bed49e6,
         type: 3}
