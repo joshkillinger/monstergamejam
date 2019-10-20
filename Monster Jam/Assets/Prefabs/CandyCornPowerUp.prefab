@@ -41,6 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5593333840045476857}
   - component: {fileID: 3218125979117558877}
+  - component: {fileID: 1762910418535003114}
+  - component: {fileID: 6833154562798382837}
   m_Layer: 0
   m_Name: CandyCornPowerUp
   m_TagString: Untagged
@@ -82,6 +84,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1762910418535003114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675979830025655289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31, y: 0.64, z: 0.15}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &6833154562798382837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675979830025655289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bddacec72144e459ce9414fef95c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  PickupTrigger: PickUp
 --- !u!1 &8488827516687013171
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +122,6 @@ GameObject:
   - component: {fileID: 6389773932712788414}
   - component: {fileID: 671542925609241071}
   - component: {fileID: 3210005145056589554}
-  - component: {fileID: 681476849365677477}
   m_Layer: 0
   m_Name: CandyCornMesh
   m_TagString: Untagged
@@ -161,16 +189,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &681476849365677477
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8488827516687013171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.64, z: 0.15}
-  m_Center: {x: 0, y: 0.3, z: 0}
