@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   PickupTrigger: PickUp
+  PickupCollider: {fileID: 1762910418535003114}
 --- !u!1 &8488827516687013171
 GameObject:
   m_ObjectHideFlags: 0

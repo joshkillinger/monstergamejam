@@ -171,4 +171,12 @@ public class PumpkinController : MonoBehaviour
             return Vector3.SignedAngle(Vector3.forward, toPlayer, Vector3.up);
         }
     }
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			other.GetComponent<TakeDamage>().Damage();
+		}
+	}
 }
