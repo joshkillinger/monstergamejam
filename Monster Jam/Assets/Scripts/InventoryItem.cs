@@ -41,6 +41,23 @@ public class InventoryItem : MonoBehaviour
 
 	public void Event_Destroy()
     {
+        foreach(var particle in GetComponentsInChildren<ParticleSystem>())
+        {
+            if (!particle.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+            particle.transform.SetParent(null);
+            var runner = particle.gameObject.AddComponent<RunAnyCoroutine>();
+            runner.Run(destroyParticleAfterDelay(3, particle));
+        }
         Destroy(gameObject);
+    }
+
+    private IEnumerator destroyParticleAfterDelay(float delay, ParticleSystem particle)
+    {
+        particle.Stop();
+        yield return new WaitForSeconds(delay);
+        Destroy(particle.gameObject);
     }
 }
