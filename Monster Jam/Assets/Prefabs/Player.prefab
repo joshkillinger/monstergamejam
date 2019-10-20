@@ -313,12 +313,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprint: {fileID: 1270277127}
   boostStats:
-    maxSpeed: 40
+    maxSpeed: 30
     acceleration: 300
     turnSpeed: 10
     dragFactor: 0.95
     forceForward: 1
-  boostDuration: 5
+  boostDuration: 2
   boostCooldown: 1
 --- !u!114 &2558217377661857333
 MonoBehaviour:
