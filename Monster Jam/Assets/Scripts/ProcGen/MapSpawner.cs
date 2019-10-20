@@ -7,7 +7,7 @@ public class MapSpawner : MonoBehaviour
     public int biomeWeightingPasses;
     public Vector2Int mapDimension;
     public List<GameObject> biomeTiles;
-    public List<GameObject> sceneryStuff;
+    public List<SceneryProbabiltyDeterminer> sceneryStuff;
     public GameObject playerPrefab;
     public GameObject enemySpawner;
     public GameObject cemeteryBiomeTile;
@@ -211,25 +211,32 @@ public class MapSpawner : MonoBehaviour
         {
             for (int j = 0; j < mapDimension.y; j++)
             {
-                if(Random.Range(0f, 1f) > .5f)
+                MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
+                if (tile != null)
                 {
-                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                    sceneryInstances.Add(obj);
-                }
-                if (Random.Range(0f, 1f) > .5f)
-                {
-                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(1f,tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                    sceneryInstances.Add(obj);
-                }
-                if (Random.Range(0f, 1f) > .5f)
-                {
-                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                    sceneryInstances.Add(obj);
-                }
-                if (Random.Range(0f, 1f) > .5f)
-                {
-                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                    sceneryInstances.Add(obj);
+                    if (tile.biome != Biome.fence)
+                    {
+                        if (Random.Range(0f, 1f) > .9f)
+                        {
+                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                            sceneryInstances.Add(obj);
+                        }
+                        if (Random.Range(0f, 1f) > .9f)
+                        {
+                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                            sceneryInstances.Add(obj);
+                        }
+                        if (Random.Range(0f, 1f) > .9f)
+                        {
+                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                            sceneryInstances.Add(obj);
+                        }
+                        if (Random.Range(0f, 1f) > .9f)
+                        {
+                            GameObject obj = Instantiate(getWeightedProbabilitySceneryItem(tile.biome), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                            sceneryInstances.Add(obj);
+                        }
+                    }
                 }
             }
         }
@@ -238,8 +245,64 @@ public class MapSpawner : MonoBehaviour
     protected GameObject getRandomSceneryItem()
     {
         int roll = Random.Range(0, sceneryStuff.Count);
-        return sceneryStuff[roll];
+        return sceneryStuff[roll].obj;
     }
+
+    protected GameObject getWeightedProbabilitySceneryItem(Biome biome)
+    {
+        if(biome == Biome.cemetery)
+        {
+            float sumOfProbs = 0;
+            foreach(SceneryProbabiltyDeterminer spd in sceneryStuff) { sumOfProbs += spd.cemeteryProb; }
+            float probTracker = 0;
+            float roll = Random.Range(0f, sumOfProbs);
+            for (int i = 0; i < sceneryStuff.Count; i++)
+            {
+                probTracker += sceneryStuff[i].cemeteryProb;
+                if (probTracker > roll)
+                {
+                    return sceneryStuff[i].obj;
+                }
+            }
+        }
+        else if(biome == Biome.field)
+        {
+            float sumOfProbs = 0;
+            foreach (SceneryProbabiltyDeterminer spd in sceneryStuff) { sumOfProbs += spd.fieldProb; }
+            float probTracker = 0;
+            float previousProbabilityTracker = 0;
+            float roll = Random.Range(0f, sumOfProbs);
+            for (int i = 0; i < sceneryStuff.Count; i++)
+            {
+                probTracker += sceneryStuff[i].fieldProb;
+                if (probTracker > roll && previousProbabilityTracker <= roll)
+                {
+                    return sceneryStuff[i].obj;
+                }
+                previousProbabilityTracker = probTracker;
+            }
+        }
+        else//pumpkin
+        {
+            float sumOfProbs = 0;
+            foreach (SceneryProbabiltyDeterminer spd in sceneryStuff) { sumOfProbs += spd.pumpkinProb; }
+            float probTracker = 0;
+            float roll = Random.Range(0f, sumOfProbs);
+            for (int i = 0; i < sceneryStuff.Count; i++)
+            {
+                probTracker += sceneryStuff[i].pumpkinProb;
+                if (probTracker > roll)
+                {
+                    return sceneryStuff[i].obj;
+                }
+            }
+        }
+        return null;
+    }
+
+    
+
+
     protected void spawnEnemySpawners()
     {
         for (int i = 0; i < mapDimension.x; i++)
@@ -388,4 +451,13 @@ public class MapSpawner : MonoBehaviour
     }
 
 
+}
+
+[System.Serializable]
+public class SceneryProbabiltyDeterminer
+{
+    public GameObject obj;
+    public float cemeteryProb;
+    public float fieldProb;
+    public float pumpkinProb;
 }
