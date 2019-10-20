@@ -12,6 +12,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
     List<List<GameObject>> tileInstances;
     List<GameObject> itemInstances;
     List<GameObject> fenceInstances;
+    List<GameObject> enemyInstances;
     GameObject playerInstance;
     Transform playerTransform;
 
@@ -22,9 +23,12 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         tileInstances = tiles;
         itemInstances = items;
         fenceInstances = fences;
+        playerInstance = player;
+        enemyInstances = new List<GameObject>();
+        distanceToTurnOff = 80;
     }
 
-    protected void Awake()
+    protected void Start()
     {
         squareDistanceToTurnOff = distanceToTurnOff * distanceToTurnOff;
         playerTransform = playerInstance.transform;
@@ -32,7 +36,12 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
 
     protected void Update()
     {
-        
+        decideToTurnOffStuff();
+    }
+
+    public void addEnemyInstance(GameObject enemyInstance)
+    {
+        enemyInstances.Add(enemyInstance);
     }
 
     protected void decideToTurnOffStuff()
@@ -41,52 +50,39 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         {
             foreach(GameObject obj in obList)
             {
-                if (obj.activeSelf)
-                {
-                    if(Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) > distanceToTurnOff)
-                    {
-                        obj.SetActive(false);
-                    }
-                }
-                else
-                {
-                    if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) < distanceToTurnOff)
-                    {
-                        obj.SetActive(true);
-                    }
-                }
+                turnOnOrOffObject(obj);
             }
         }
 
         foreach (GameObject obj in fenceInstances)
         {
-            if (obj.activeSelf)
-            {
-                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) > distanceToTurnOff)
-                {
-                    obj.SetActive(false);
-                }
-            }
-            else
-            {
-                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) < distanceToTurnOff)
-                {
-                    obj.SetActive(true);
-                }
-            }
+            turnOnOrOffObject(obj);
         }
         foreach (GameObject obj in itemInstances)
         {
+            turnOnOrOffObject(obj);
+        }
+        foreach (GameObject obj in enemyInstances)
+        {
+            turnOnOrOffObject(obj);
+        }
+
+    }
+
+    protected void turnOnOrOffObject(GameObject obj)
+    {
+        if (playerTransform != null)
+        {
             if (obj.activeSelf)
             {
-                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) > distanceToTurnOff)
+                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) > squareDistanceToTurnOff)
                 {
                     obj.SetActive(false);
                 }
             }
             else
             {
-                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) < distanceToTurnOff)
+                if (Vector3.SqrMagnitude(playerTransform.position - obj.transform.position) < squareDistanceToTurnOff)
                 {
                     obj.SetActive(true);
                 }

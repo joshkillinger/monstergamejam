@@ -8,6 +8,7 @@ public class MapSpawner : MonoBehaviour
     public Vector2Int mapDimension;
     public List<GameObject> biomeTiles;
     public GameObject playerPrefab;
+    public GameObject enemySpawner;
     public GameObject cemeteryBiomeTile;
     public GameObject pumpkinBiomeTile;
     public GameObject fieldBiomeTile;
@@ -27,12 +28,14 @@ public class MapSpawner : MonoBehaviour
     private List<List<GameObject>> tileInstances;
     private List<GameObject> itemInstances;
     private List<GameObject> fenceInstances;
+    private List<GameObject> enemySpawnerInstances;
     private GameObject playerInstance;
     protected void Awake()
     {
         tileInstances = new List<List<GameObject>>();
         itemInstances = new List<GameObject>();
         fenceInstances = new List<GameObject>();
+        enemySpawnerInstances = new List<GameObject>();
         for(int i = 0; i < mapDimension.x; i++)
         {
             tileInstances.Add(new List<GameObject>());
@@ -51,6 +54,8 @@ public class MapSpawner : MonoBehaviour
         spawnFences();
         spawnItems();
         makeItemTurnerOfferThing();
+        spawnEnemySpawners();
+        spawnEnemies();
         
     }
 
@@ -175,7 +180,7 @@ public class MapSpawner : MonoBehaviour
         {
             for (int j = 0; j < mapDimension.y; j++)
             {
-                if(Random.Range(0f, 1f) > .6f)
+                if(Random.Range(0f, 1f)  < getTileDistanceRatioFromCenter(i, j))
                 {
                     Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, 8f), 0f, Random.Range(1f, 8f));
                     if(Random.Range(0f, 1f) > .8f)
@@ -191,6 +196,55 @@ public class MapSpawner : MonoBehaviour
         }
     }
  
+    protected void spawnEnemySpawners()
+    {
+        for (int i = 0; i < mapDimension.x; i++)
+        {
+            for (int j = 0; j < mapDimension.y; j++)
+            {
+                Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, 8f), 0f, Random.Range(1f, 8f));
+                if (Random.Range(0f, 1f) < getTileDistanceRatioFromCenter(i, j))
+                {
+                    enemySpawnerInstances.Add(Instantiate(enemySpawner, spawnPosition, Quaternion.identity));
+                }
+            }
+        }
+
+        ItemTurnerOnAndOffer jeff = gameObject.GetComponent<ItemTurnerOnAndOffer>();
+        if(jeff != null)
+        {
+            foreach(GameObject obj in enemySpawnerInstances)
+            {
+                EnemySpawner es = obj.GetComponent<EnemySpawner>();
+                if(es != null)
+                {
+                    es.init(jeff);
+                }
+            }
+        }
+    }
+
+    protected void spawnEnemies()
+    {
+        foreach(GameObject obj in enemySpawnerInstances)
+        {
+            EnemySpawner es = obj.GetComponent<EnemySpawner>();
+            if(es != null)
+            {
+                es.spawnEnemy();
+            }
+        }
+
+    }
+
+    protected float getTileDistanceRatioFromCenter(int x, int y)
+    {
+        Vector2Int centerTile = new Vector2Int(mapDimension.x / 2, mapDimension.y / 2);
+        float dist = Vector2Int.Distance(centerTile, new Vector2Int(x, y));
+        float ratio = dist / (mapDimension.x);
+        return ratio;
+    }
+
     protected List<MapTile> getAdjacentTiles(int x, int y)
     {
         List<MapTile> adjacentTiles = new List<MapTile>();
