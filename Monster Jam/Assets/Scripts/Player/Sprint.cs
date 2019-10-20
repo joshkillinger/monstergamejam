@@ -11,8 +11,7 @@ public class Sprint : MonoBehaviour
 	MoveStats sprintStats = null;
 	bool sprinting = false;
 
-	[SerializeField]
-	Stamina stamina = null;
+	StaminaManager stamina = null;
 	[SerializeField]
 	float staminaConsumption = 0.3f;
 
@@ -21,6 +20,7 @@ public class Sprint : MonoBehaviour
 	private void Start()
 	{
 		mover = GetComponent<PlayerMover>();
+		stamina = GameObject.FindWithTag("GameController").GetComponentInChildren<StaminaManager>();
 	}
 
 	private void Update()

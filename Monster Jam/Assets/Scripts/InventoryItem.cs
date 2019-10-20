@@ -10,6 +10,9 @@ public class InventoryItem : MonoBehaviour
     
 	public Collider PickupCollider = null;
 
+	[SerializeField]
+	float points = 1;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

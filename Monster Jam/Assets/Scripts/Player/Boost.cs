@@ -7,8 +7,7 @@ public class Boost : MonoBehaviour
 {
 	private PlayerMover mover = null;
 	private InventoryManager inventory = null;
-	[SerializeField]
-	private Stamina stamina = null;
+	private StaminaManager stamina = null;
 	[SerializeField]
 	private Sprint sprint = null;
 
@@ -26,7 +25,9 @@ public class Boost : MonoBehaviour
 	private void Start()
 	{
 		mover = GetComponent<PlayerMover>();
-		inventory = GameObject.FindWithTag("GameController").GetComponentInChildren<InventoryManager>();
+		var gameController = GameObject.FindWithTag("GameController");
+		inventory = gameController.GetComponentInChildren<InventoryManager>();
+		stamina = gameController.GetComponentInChildren<StaminaManager>();
 	}
 
 	private void Update()

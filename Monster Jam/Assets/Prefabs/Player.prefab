@@ -211,7 +211,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3665553833409811191}
-  - component: {fileID: 371633263}
   - component: {fileID: 96732859809531450}
   - component: {fileID: 96732859809531448}
   - component: {fileID: 1270277127}
@@ -243,18 +242,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &371633263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4907411879461207385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289f4587da2cc42888d1c83046e9d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &96732859809531450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -309,7 +296,6 @@ MonoBehaviour:
     turnSpeed: 10
     dragFactor: 0.8
     forceForward: 0
-  stamina: {fileID: 371633263}
   staminaConsumption: 0.3
   PreventSprinting: 0
 --- !u!114 &371633260
@@ -324,7 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c48710e963149378b0061d4900a35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: {fileID: 371633263}
   sprint: {fileID: 1270277127}
   boostStats:
     maxSpeed: 40
@@ -346,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a84c1f77aa64366a1b0070e59521b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: {fileID: 371633263}
+  stamina: {fileID: 0}
   staminaReplenish: 0.3
 --- !u!114 &6033234079359422277
 MonoBehaviour:
@@ -360,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4aa6222e1eb4a4da0711ac2ba1ddd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibilityFrames: 30
 --- !u!65 &371633261
 BoxCollider:
   m_ObjectHideFlags: 0
