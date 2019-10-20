@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: ItemType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6833154562798382837, guid: d530e03fc78e83d49abb83ddb40dfa37,
+        type: 3}
+      propertyPath: MaxBlinkRate
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6389773932712788414, guid: d530e03fc78e83d49abb83ddb40dfa37,
         type: 3}
       propertyPath: m_LocalScale.x

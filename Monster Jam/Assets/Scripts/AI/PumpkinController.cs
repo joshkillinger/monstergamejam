@@ -203,7 +203,6 @@ public class PumpkinController : MonoBehaviour
         {
             var toPlayer = (player.position - transform.position).normalized;
             return Vector3.SignedAngle(Vector3.forward, toPlayer, Vector3.up);
-
         }
     }
 

@@ -276,7 +276,7 @@ MonoBehaviour:
   defaultStats:
     maxSpeed: 10
     acceleration: 100
-    turnSpeed: 12
+    turnSpeed: 8
     dragFactor: 0.6
     forceForward: 0
 --- !u!114 &1270277127
@@ -294,7 +294,7 @@ MonoBehaviour:
   sprintStats:
     maxSpeed: 20
     acceleration: 300
-    turnSpeed: 10
+    turnSpeed: 8
     dragFactor: 0.8
     forceForward: 0
   staminaConsumption: 0.3
@@ -315,7 +315,7 @@ MonoBehaviour:
   boostStats:
     maxSpeed: 30
     acceleration: 300
-    turnSpeed: 10
+    turnSpeed: 8
     dragFactor: 0.95
     forceForward: 1
   boostDuration: 2
