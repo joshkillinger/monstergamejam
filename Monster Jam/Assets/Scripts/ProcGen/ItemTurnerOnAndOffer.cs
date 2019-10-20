@@ -64,10 +64,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         }
         foreach (GameObject obj in itemInstances)
         {
-			if (!inventory.IsHoldingItem(obj))
-			{
-				turnOnOrOffObject(obj);
-			}
+            turnOnOrOffObject(obj);
         }
         foreach (GameObject obj in enemyInstances)
         {

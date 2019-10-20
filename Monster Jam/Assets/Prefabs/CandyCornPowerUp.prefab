@@ -193,7 +193,10 @@ MonoBehaviour:
   ItemType: 1
   PickupTrigger: PickUp
   PickupCollider: {fileID: 1762910418535003114}
+  blinker: {fileID: 375978315363228720}
   Points: 1
+  MinBlinkRate: 5
+  MaxBlinkRate: 50
 --- !u!1 &8488827516687013171
 GameObject:
   m_ObjectHideFlags: 0
