@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 4239441235171818244}
   - component: {fileID: 6987702861017666956}
   - component: {fileID: 8818678722033141697}
+  - component: {fileID: 2188471410188216063}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -402,6 +403,27 @@ MonoBehaviour:
   MoveSpeed: 2
   turning: 0
   moving: 0
+--- !u!114 &2188471410188216063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199985763815875678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096c06ed7b3643440a2c5f1b43508a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxTurnAngle: 90
+  AlertRange: 200
+  IdleUpdateRate: 1.5
+  PursuitRange: 100
+  AlertUpdateRate: 0.75
+  OutOfRangeRetries: 2
+  MoveDelay: 0.2
+  AlertGizmoColor: {r: 0, g: 1, b: 0.14495587, a: 1}
+  PursuitGizmoColor: {r: 1, g: 0.024376594, b: 0, a: 1}
 --- !u!1 &6615007766302169057
 GameObject:
   m_ObjectHideFlags: 0
