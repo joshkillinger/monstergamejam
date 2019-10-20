@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PumpkinAnimatorBiggieSmalls
+  m_Name: PumpkinAnimatorTupac
   m_Controller: {fileID: 9100000, guid: 2ae4cd21a8efc2840a2339e19a126be7, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: f54b86d4e3b56094693723c9b28c3eff, type: 2}
