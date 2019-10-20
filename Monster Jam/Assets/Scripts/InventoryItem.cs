@@ -50,7 +50,6 @@ public class InventoryItem : MonoBehaviour
 		while(now - startTime < delay)
 		{
 			var blinkRate = Mathf.Lerp(MinBlinkRate, MaxBlinkRate, (now - startTime) / delay);
-			Debug.Log(blinkRate);
 			if (blinker != null && blinkRate > 0 && timeSinceBlink > (1 / blinkRate))
 			{
 				blinker.SetActive(!blinker.activeSelf);
