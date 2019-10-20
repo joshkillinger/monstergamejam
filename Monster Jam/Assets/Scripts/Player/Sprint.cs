@@ -29,21 +29,17 @@ public class Sprint : MonoBehaviour
 			shouldSprint = stamina.Consume(staminaConsumption * Time.deltaTime);
 		}
 
-		if (shouldSprint)
+		if (shouldSprint != sprinting)
 		{
-			if (!sprinting)
+			sprinting = shouldSprint;
+			if (shouldSprint)
 			{
 				mover.SetMoveStats(sprintStats);
 			}
-			sprinting = true;
-		}
-		else
-		{
-			if (sprinting)
+			else
 			{
 				mover.ResetMoveStats();
 			}
-			sprinting = false;
 		}
 	}
 }

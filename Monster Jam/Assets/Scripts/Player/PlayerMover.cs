@@ -13,8 +13,9 @@ public class PlayerMover : MonoBehaviour
 
 	enum MovementType
 	{
-		ScreenWalk,
-		CharacterSteer
+		ScreenWalk = 0,
+		CharacterSteer = 1,
+		CharacterSteer_NoReverse = 2
 	}
 
 	Rigidbody body = null;
@@ -92,6 +93,12 @@ public class PlayerMover : MonoBehaviour
 				internalForce = (((horizontalAxis * horizontal) + (verticalAxis * vertical))).normalized * stats.acceleration;
 				break;
 			case MovementType.CharacterSteer:
+			case MovementType.CharacterSteer_NoReverse:
+				if (moveType == MovementType.CharacterSteer_NoReverse && vertical < 0)
+				{
+					vertical = 0;
+				}
+
 				switch (plane)
 				{
 					case MovementPlane.XY:
@@ -119,10 +126,10 @@ public class PlayerMover : MonoBehaviour
 				angle = -180;
 			}
 
-			body.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), stats.turnSpeed);
+			transform.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), stats.turnSpeed);
 		}
 
-		if (AttempingMoveForward(horizontal, vertical))
+		//if (AttempingMoveForward(horizontal, vertical))
 		{
 			body.AddForce(internalForce);
 		}
@@ -140,13 +147,19 @@ public class PlayerMover : MonoBehaviour
 		externalForce = Vector3.zero;
 	}
 
-	bool AttempingMoveForward(float horizontal, float vertical)
+	private bool AttempingMoveForward(float horizontal, float vertical)
 	{
+		if (stats.forceForward)
+		{
+			return true;
+		}
+
 		switch (moveType)
 		{
 			case MovementType.ScreenWalk:
 				return Mathf.Abs(horizontal) > Helper.Epsilon || Mathf.Abs(vertical) > Helper.Epsilon;
 			case MovementType.CharacterSteer:
+			case MovementType.CharacterSteer_NoReverse:
 				return vertical > Helper.Epsilon;
 		}
 		return false;
@@ -172,11 +185,13 @@ public class PlayerMover : MonoBehaviour
 public class MoveStats
 {
 	[SerializeField]
-	public float maxSpeed = 1000f;
+	public float maxSpeed = 10f;
 	[SerializeField]
 	public float acceleration = 100f;
 	[SerializeField, Tooltip("Degrees Per Frame")]
 	public float turnSpeed = 15f;
 	[SerializeField]
-	public float dragFactor = 0.8f;
+	public float dragFactor = 0.6f;
+	[SerializeField]
+	public bool forceForward = false;
 }
