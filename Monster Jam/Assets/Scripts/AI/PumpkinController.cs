@@ -16,6 +16,9 @@ public class PumpkinController : MonoBehaviour
     public float OutOfRangeRetries = 2;
     public float MoveDelay = .3f;
 
+	public float PlayerKnockback = 10f;
+	public float PlayerStunDuration = 3f;
+
     public Color AlertGizmoColor = Color.magenta;
     public Color PursuitGizmoColor = Color.magenta;
 
@@ -210,6 +213,8 @@ public class PumpkinController : MonoBehaviour
 		if (collision.collider.CompareTag("Player"))
 		{
 			collision.collider.GetComponent<TakeDamage>().Damage();
+			collision.collider.GetComponent<PlayerMover>().ApplyExternalForce((collision.collider.transform.position - transform.position) * PlayerKnockback);
+			collision.collider.GetComponent<Stun>().StartStun(PlayerStunDuration);
 		}
 	}
 }

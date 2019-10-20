@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour, IPreventable
 {
 	enum MovementPlane
 	{
@@ -31,6 +31,7 @@ public class PlayerMover : MonoBehaviour
 	MoveStats defaultStats = null;
 	MoveStats stats = null;
 	bool moving = false;
+	bool preventingControl = false;
 
 	Vector3 externalForce = Vector3.zero;
 
@@ -126,10 +127,13 @@ public class PlayerMover : MonoBehaviour
 				angle = -180;
 			}
 
-			transform.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), stats.turnSpeed);
+			if (!preventingControl)
+			{
+				transform.rotation = Quaternion.RotateTowards(body.rotation, Quaternion.Euler(rotationAxis * angle), stats.turnSpeed);
+			}
 		}
 
-		//if (AttempingMoveForward(horizontal, vertical))
+		if (AttempingMoveForward(horizontal, vertical))
 		{
 			body.AddForce(internalForce);
 		}
@@ -149,6 +153,11 @@ public class PlayerMover : MonoBehaviour
 
 	private bool AttempingMoveForward(float horizontal, float vertical)
 	{
+		if (preventingControl)
+		{
+			return false;
+		}
+
 		if (stats.forceForward)
 		{
 			return true;
@@ -178,6 +187,16 @@ public class PlayerMover : MonoBehaviour
 	public void ResetMoveStats()
 	{
 		stats = defaultStats;
+	}
+
+	void IPreventable.StartPrevent()
+	{
+		preventingControl = true;
+	}
+
+	void IPreventable.StopPrevent()
+	{
+		preventingControl = false;
 	}
 }
 
