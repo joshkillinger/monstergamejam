@@ -25,6 +25,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PumpkinSlow
       objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: PlayerKnockback
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: PlayerStunDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8114258590056018059, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80,6 +90,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6987702861017666956, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3141913e9ea860e49a6fb3cefe4b48cf, type: 2}
+    - target: {fileID: 7732329528308710039, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732329528308710039, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7722504865769751683, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -110,42 +135,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Range
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_SpotAngle
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7732329528308710039, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7732329528308710039, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4672008889507404494, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 3447038591770236762, guid: 8a468583cc6d9e44c821e4ab0327e0f7,
-        type: 3}
-    - target: {fileID: 6987702861017666956, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3141913e9ea860e49a6fb3cefe4b48cf, type: 2}
     - target: {fileID: 4336568216265252843, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -216,6 +205,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 63.426003
       objectReference: {fileID: 0}
+    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672008889507404494, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3447038591770236762, guid: 8a468583cc6d9e44c821e4ab0327e0f7,
+        type: 3}
     - target: {fileID: 1564391945413963606, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_Mesh

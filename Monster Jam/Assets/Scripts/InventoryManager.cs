@@ -42,8 +42,10 @@ public class InventoryManager : MonoBehaviour
 	{
 		++Version;
 
-		item.transform.parent = itemContainer;
-		items[item.ItemType].Add(item);
+		var newItem = Instantiate(item);
+		newItem.transform.parent = itemContainer;
+		newItem.Event_Hide();
+		items[newItem.ItemType].Add(newItem);
 
 		if (ejector != null)
 		{
@@ -128,5 +130,19 @@ public class InventoryManager : MonoBehaviour
 		}
 
 		return null;
+	}
+
+	public bool IsHoldingItem(GameObject itemObject)
+	{
+		var parent = itemObject.transform;
+		while (parent != null)
+		{
+			if (parent == itemContainer)
+			{
+				return true;
+			}
+			parent = parent.parent;
+		}
+		return false;
 	}
 }

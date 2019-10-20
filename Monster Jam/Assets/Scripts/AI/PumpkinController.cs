@@ -24,7 +24,7 @@ public class PumpkinController : MonoBehaviour
 
     private Transform player;
 
-    void Start()
+    void OnEnable()
     {
         player = GameObject.FindWithTag("Player").transform;
         animate = GetComponent<AnimateMovement>();
@@ -142,7 +142,6 @@ public class PumpkinController : MonoBehaviour
         {
             var vecToPlayer = (player.position - transform.position).normalized;
             var angle = getTurnAngle();
-            Debug.Log($"Angle = {angle}");
             if (Vector3.Dot(vecToPlayer, transform.forward) < 0)
             {
                 //don't jump away from player, just turn

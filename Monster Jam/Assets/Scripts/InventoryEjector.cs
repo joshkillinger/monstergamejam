@@ -72,7 +72,7 @@ public class InventoryEjector : MonoBehaviour
 		});
 
 		item.transform.position = source.position;
-		item.Event_ToggleVisibility(true);
+		item.Event_Show();
 		item.PickupCollider.enabled = false;
 
 		if (destroyAfter)

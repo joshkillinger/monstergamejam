@@ -23,9 +23,14 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
-	public void Event_ToggleVisibility(bool visibility)
+	public void Event_Show()
 	{
-		gameObject.SetActive(visibility);
+		gameObject.SetActive(true);
+	}
+
+	public void Event_Hide()
+	{
+		gameObject.SetActive(false);
 	}
 
 	public void Event_DestroyOnDelay(float delay)

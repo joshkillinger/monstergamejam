@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4aa6222e1eb4a4da0711ac2ba1ddd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityFrames: 30
+  invincibilityFrames: 60
 --- !u!114 &6892274740459706202
 MonoBehaviour:
   m_ObjectHideFlags: 0

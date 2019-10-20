@@ -16,6 +16,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
     GameObject playerInstance;
     Transform playerTransform;
 
+	InventoryManager inventory;
 
 
     public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, GameObject player)
@@ -32,6 +33,8 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
     {
         squareDistanceToTurnOff = distanceToTurnOff * distanceToTurnOff;
         playerTransform = playerInstance.transform;
+
+		inventory = GameObject.FindWithTag("GameController").GetComponentInChildren<InventoryManager>();
     }
 
     protected void Update()
@@ -61,7 +64,10 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         }
         foreach (GameObject obj in itemInstances)
         {
-            turnOnOrOffObject(obj);
+			if (!inventory.IsHoldingItem(obj))
+			{
+				turnOnOrOffObject(obj);
+			}
         }
         foreach (GameObject obj in enemyInstances)
         {
