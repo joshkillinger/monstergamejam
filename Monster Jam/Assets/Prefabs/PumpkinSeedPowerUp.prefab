@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6675979830025655289, guid: d530e03fc78e83d49abb83ddb40dfa37,
         type: 3}
       propertyPath: m_Name
-      value: CandyCornPowerUp
+      value: PumpkinSeedPowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 5593333840045476857, guid: d530e03fc78e83d49abb83ddb40dfa37,
         type: 3}
@@ -78,5 +78,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 707e30c999e81774abb29c837aea0abc, type: 2}
+    - target: {fileID: 6833154562798382837, guid: d530e03fc78e83d49abb83ddb40dfa37,
+        type: 3}
+      propertyPath: ItemType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d530e03fc78e83d49abb83ddb40dfa37, type: 3}
