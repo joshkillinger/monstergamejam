@@ -47,7 +47,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 2494893e0473ee74c8d42fb73c50cebc, type: 3}
     - {fileID: 2800000, guid: 72bc4921554a97e48bf89ec82b60b9c0, type: 3}
     - {fileID: 2800000, guid: 5858bf5238b2b9d468c410d3b07d2ff2, type: 3}
-    totalSpriteSurfaceArea: 89568
+    - {fileID: 2800000, guid: 7bd04c094bfe8004992b324499183665, type: 3}
+    totalSpriteSurfaceArea: 95808
     bindAsDefault: 1
     storedHash:
       serializedVersion: 2
@@ -57,12 +58,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0eac393002125b645b260c920885d1ca, type: 3}
   - {fileID: 21300000, guid: 72bc4921554a97e48bf89ec82b60b9c0, type: 3}
   - {fileID: 21300000, guid: 5858bf5238b2b9d468c410d3b07d2ff2, type: 3}
+  - {fileID: 21300000, guid: 7bd04c094bfe8004992b324499183665, type: 3}
   - {fileID: 21300000, guid: 23e11d5dd76fbea47a9baf930d5bf8f3, type: 3}
   - {fileID: 21300000, guid: 2494893e0473ee74c8d42fb73c50cebc, type: 3}
   m_PackedSpriteNamesToIndex:
   - CandyCorn
   - StaminaBarOutline
   - StaminaFill
+  - Score
   - PumpkinSeed
   - StaminaBarBase
   m_Tag: Hud
