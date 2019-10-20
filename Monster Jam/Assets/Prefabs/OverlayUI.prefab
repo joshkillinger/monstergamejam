@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 2073910081732018605}
   - component: {fileID: 6407888734035184549}
   - component: {fileID: 1313564856}
+  - component: {fileID: 1856508146026787463}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -834,6 +835,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: {fileID: 2366896998320288041}
 --- !u!114 &1313564856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4835429052324380395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a641eaa8781864f25a4f4eb3b0edd016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fill: {fileID: 2366896998320288041}
+--- !u!114 &1856508146026787463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

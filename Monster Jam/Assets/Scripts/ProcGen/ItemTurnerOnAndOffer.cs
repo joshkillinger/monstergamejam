@@ -13,18 +13,20 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
     List<GameObject> itemInstances;
     List<GameObject> fenceInstances;
     List<GameObject> enemyInstances;
+    List<GameObject> sceneryInstances;
     GameObject playerInstance;
     Transform playerTransform;
 
 	InventoryManager inventory;
 
 
-    public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, GameObject player)
+    public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, List<GameObject> scenery, GameObject player)
     {
         tileInstances = tiles;
         itemInstances = items;
         fenceInstances = fences;
         playerInstance = player;
+        sceneryInstances = scenery;
         enemyInstances = new List<GameObject>();
         distanceToTurnOff = 80;
     }

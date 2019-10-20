@@ -7,6 +7,7 @@ public class MapSpawner : MonoBehaviour
     public int biomeWeightingPasses;
     public Vector2Int mapDimension;
     public List<GameObject> biomeTiles;
+    public List<GameObject> sceneryStuff;
     public GameObject playerPrefab;
     public GameObject enemySpawner;
     public GameObject cemeteryBiomeTile;
@@ -29,6 +30,7 @@ public class MapSpawner : MonoBehaviour
     private List<GameObject> itemInstances;
     private List<GameObject> fenceInstances;
     private List<GameObject> enemySpawnerInstances;
+    private List<GameObject> sceneryInstances;
     private GameObject playerInstance;
     protected void Awake()
     {
@@ -36,6 +38,7 @@ public class MapSpawner : MonoBehaviour
         itemInstances = new List<GameObject>();
         fenceInstances = new List<GameObject>();
         enemySpawnerInstances = new List<GameObject>();
+        sceneryInstances = new List<GameObject>();
         for(int i = 0; i < mapDimension.x; i++)
         {
             tileInstances.Add(new List<GameObject>());
@@ -53,6 +56,7 @@ public class MapSpawner : MonoBehaviour
         }
         spawnFences();
         spawnItems();
+        spawnScenery();
         makeItemTurnerOfferThing();
         spawnEnemySpawners();
         spawnEnemies();
@@ -182,7 +186,7 @@ public class MapSpawner : MonoBehaviour
             {
                 if(Random.Range(0f, 1f)  < getTileDistanceRatioFromCenter(i, j))
                 {
-                    Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, 8f), 0f, Random.Range(1f, 8f));
+                    Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileDimension.x - 1), 0f, Random.Range(1f, tileDimension.y - 1));
                     if(Random.Range(0f, 1f) > .8f)
                     {
                         itemInstances.Add(Instantiate(candyCorn, spawnPosition, Quaternion.identity));
@@ -195,14 +199,54 @@ public class MapSpawner : MonoBehaviour
             }
         }
     }
- 
+
+    protected void spawnScenery()
+    {
+        float tileXMid = (tileDimension.x / 2);
+        float tileYMid = (tileDimension.x / 2);
+        float tileXMax = tileDimension.x - 1;
+        float tileYMax = tileDimension.y - 1;
+
+        for (int i = 0; i < mapDimension.x; i++)
+        {
+            for (int j = 0; j < mapDimension.y; j++)
+            {
+                if(Random.Range(0f, 1f) > .5f)
+                {
+                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(1f, tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                    sceneryInstances.Add(obj);
+                }
+                if (Random.Range(0f, 1f) > .5f)
+                {
+                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(1f,tileYMid)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                    sceneryInstances.Add(obj);
+                }
+                if (Random.Range(0f, 1f) > .5f)
+                {
+                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileXMid), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                    sceneryInstances.Add(obj);
+                }
+                if (Random.Range(0f, 1f) > .5f)
+                {
+                    GameObject obj = Instantiate(getRandomSceneryItem(), tileInstances[i][j].transform.position + new Vector3(Random.Range(tileXMid, tileXMax), 0f, Random.Range(tileYMid, tileYMax)), Quaternion.identity * Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                    sceneryInstances.Add(obj);
+                }
+            }
+        }
+    }
+
+    protected GameObject getRandomSceneryItem()
+    {
+        int roll = Random.Range(0, sceneryStuff.Count);
+        return sceneryStuff[roll];
+    }
     protected void spawnEnemySpawners()
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
             for (int j = 0; j < mapDimension.y; j++)
             {
-                Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, 8f), 0f, Random.Range(1f, 8f));
+                Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileDimension.x - 1), 0f, Random.Range(1f, tileDimension.y - 1));
                 if (Random.Range(0f, 1f) < getTileDistanceRatioFromCenter(i, j))
                 {
                     enemySpawnerInstances.Add(Instantiate(enemySpawner, spawnPosition, Quaternion.identity));
@@ -333,7 +377,7 @@ public class MapSpawner : MonoBehaviour
 
     protected void makeItemTurnerOfferThing()
     {
-        gameObject.AddComponent<ItemTurnerOnAndOffer>().init(tileInstances, itemInstances, fenceInstances, playerInstance); 
+        gameObject.AddComponent<ItemTurnerOnAndOffer>().init(tileInstances, itemInstances, fenceInstances, sceneryInstances, playerInstance); 
     }
 
     protected GameObject getStraightUpRandomTile()
