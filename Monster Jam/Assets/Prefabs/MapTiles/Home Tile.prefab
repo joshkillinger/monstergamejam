@@ -116,6 +116,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Home Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 1718387221987414298, guid: fbbfa48a7d853a441b968d9edd546073,
+        type: 3}
+      propertyPath: m_TagString
+      value: Home
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568820322123788240, guid: fbbfa48a7d853a441b968d9edd546073,
+        type: 3}
+      propertyPath: biome
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6685824305397813275, guid: fbbfa48a7d853a441b968d9edd546073,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,11 +190,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3568820322123788240, guid: fbbfa48a7d853a441b968d9edd546073,
-        type: 3}
-      propertyPath: biome
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5795575252849356514, guid: fbbfa48a7d853a441b968d9edd546073,
         type: 3}
