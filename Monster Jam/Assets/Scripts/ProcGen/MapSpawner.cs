@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapSpawner : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MapSpawner : MonoBehaviour
     public GameObject candyCorn;
     public GameObject pumpkinSeed;
 
+    public Image loadingImage;
+    public GameObject loadingUI;
+
+    private float loadingCompletion = 0f;
     private Vector2Int tileDimension;
     private List<List<GameObject>> tileInstances;
     private List<GameObject> itemInstances;
@@ -45,6 +50,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         tileDimension = new Vector2Int(20, 20);
+        updateLoading(0f);
         StartCoroutine(spawnMap());
     }
 
@@ -52,24 +58,53 @@ public class MapSpawner : MonoBehaviour
     {
         //TODO make loading screen here
         yield return mapSpawnInitialPass();
+        updateLoading(.1f);
+
         yield return biomeWeightingCoroutine();
+        updateLoading(.3f);
+
         yield return spawnFences();
+        updateLoading(.4f);
+
         yield return spawnItems();
+        updateLoading(.5f);
+
         yield return spawnScenery();
+        updateLoading(.6f);
+
         makeItemTurnerOfferThing();
+
         yield return spawnEnemySpawners();
+        updateLoading(.7f);
+
         yield return spawnEnemies();
+        updateLoading(.98f);
+
         playerInstance = Instantiate(playerPrefab, new Vector3((mapDimension.x / 2) * tileDimension.x, 0f, (mapDimension.y / 2) * tileDimension.y) + new Vector3(5f, 0, 1f), Quaternion.identity);
         playerInstance.GetComponentInChildren<PickupHinter>().SetItems(itemInstances);
         Debug.Log("Map spawning complete");
+        updateLoading(1.0f);
         
     }
 
+    protected void updateLoading(float amt)
+    {
+        loadingCompletion = amt;
+        loadingImage.fillAmount = loadingCompletion;
+        if(loadingCompletion > .99f)
+        {
+            endLoadingScreen();
+        }
+    }
+
+    protected void endLoadingScreen()
+    {
+        loadingUI.SetActive(false);
+    }
     protected IEnumerator mapSpawnInitialPass()
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("generating initial map " + (float)i / mapDimension.x + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 if (i == mapDimension.x / 2 && j == mapDimension.y / 2)
@@ -107,6 +142,7 @@ public class MapSpawner : MonoBehaviour
                     tileInstances[i].Add(Instantiate(tileObj, new Vector3(i * tileDimension.x, 0f, j * tileDimension.y), tileObj.transform.rotation));
                 }
             }
+            updateLoading(0f + (float)i / mapDimension.x * .1f);
             yield return null;
         }
     }
@@ -115,8 +151,9 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < biomeWeightingPasses; i++)
         {
-            Debug.Log("Biome weighting " + (float)i / biomeWeightingPasses * 100 + "% done");
+            
             biomeWeightingPass();
+            updateLoading(.1f + (float)i / biomeWeightingPasses * .2f);
             yield return null;
         }
     }
@@ -211,7 +248,6 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning items " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 if(Random.Range(0f, 1f)  < getTileDistanceRatioFromCenter(i, j))
@@ -227,6 +263,7 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
             }
+            updateLoading(.4f + (float)i / mapDimension.x * .1f);
             yield return null;
         }
 
@@ -241,7 +278,6 @@ public class MapSpawner : MonoBehaviour
 
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning scenery " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
@@ -288,6 +324,7 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
             }
+            updateLoading(.5f + (float)i / mapDimension.x * .1f);
             yield return null;
         }
     }
@@ -361,7 +398,7 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning enemy spawners " + (float)i / mapDimension.x * 100 + "% done");
+            
             for (int j = 0; j < mapDimension.y; j++)
             {
                 Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileDimension.x - 1), 0f, Random.Range(1f, tileDimension.y - 1));
@@ -370,6 +407,7 @@ public class MapSpawner : MonoBehaviour
                     enemySpawnerInstances.Add(Instantiate(enemySpawner, spawnPosition, Quaternion.identity));
                 }
             }
+            updateLoading(.6f + (float)i / mapDimension.x * .1f);
             yield return null;
         }
 
@@ -391,12 +429,12 @@ public class MapSpawner : MonoBehaviour
     {
         for(int i = 0; i < enemySpawnerInstances.Count; i++)
         {
-            Debug.Log("Spawning enemies " + (float)i / enemySpawnerInstances.Count  * 100 + "% done");
             EnemySpawner es = enemySpawnerInstances[i].GetComponent<EnemySpawner>();
             if(es != null)
             {
                 es.spawnEnemy();
             }
+            updateLoading(.7f + (float)i / enemySpawnerInstances.Count * .28f);
             yield return null;
         }
 
@@ -452,7 +490,6 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning fences " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
@@ -482,6 +519,7 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
             }
+            updateLoading(.3f + (float)i / mapDimension.x * .1f);
             yield return null;
         }
     }

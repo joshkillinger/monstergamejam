@@ -7,22 +7,32 @@ public class AnimeLines : MonoBehaviour
     public ParticleSystem particles;
     private Boost boost;
 
-    private bool cachedBoost = false;
 
-    void Start()
+    private bool cachedBoost = false;
+    private bool initialized = false;
+
+    IEnumerator Start()
     {
-        boost = GameObject.FindWithTag("Player").GetComponent<Boost>();
+        while (boost == null)
+        {
+            boost = GameObject.FindWithTag("Player")?.GetComponent<Boost>();
+            yield return null;
+        }
+        initialized = true;
         particles.gameObject.SetActive(false);
         StartCoroutine(show());
     }
 
     void Update()
     {
-        if (boost.Boosting && !cachedBoost)
+        if (initialized)
         {
-            StopAllCoroutines();
-            cachedBoost = true;
-            StartCoroutine(show());
+            if (boost.Boosting && !cachedBoost)
+            {
+                StopAllCoroutines();
+                cachedBoost = true;
+                StartCoroutine(show());
+            }
         }
     }
 
