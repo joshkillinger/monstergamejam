@@ -182,7 +182,7 @@ MonoBehaviour:
   plane: 1
   moveType: 1
   defaultStats:
-    maxSpeed: 10
+    maxSpeed: 7
     acceleration: 100
     turnSpeed: 8
     dragFactor: 0.6
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprintStats:
-    maxSpeed: 20
-    acceleration: 300
+    maxSpeed: 16
+    acceleration: 250
     turnSpeed: 8
     dragFactor: 0.8
     forceForward: 0
@@ -221,13 +221,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprint: {fileID: 1270277127}
   boostStats:
-    maxSpeed: 30
+    maxSpeed: 24
     acceleration: 300
     turnSpeed: 8
     dragFactor: 0.95
     forceForward: 1
-  boostDuration: 2
-  boostCooldown: 1
+  boostDuration: 3
+  boostCooldown: 5
 --- !u!114 &2558217377661857333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 0.7137255, g: 0.654902, b: 0.83137256, a: 1}
-  m_Intensity: 120
+  m_Intensity: 280
   m_Range: 100
   m_SpotAngle: 90
   m_InnerSpotAngle: 9
@@ -457,11 +457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RatRigged
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: b2001e7212bcb304e9fb32d892b03763,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 583eb4a9b9dec9c4fa79e85f1123b058, type: 2}
     - target: {fileID: -4216859302048453862, guid: b2001e7212bcb304e9fb32d892b03763,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -522,6 +517,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 57bcd335bc21e37499ecddf7d1e06755, type: 2}
+    - target: {fileID: -6057140222963153312, guid: b2001e7212bcb304e9fb32d892b03763,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 583eb4a9b9dec9c4fa79e85f1123b058, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2001e7212bcb304e9fb32d892b03763, type: 3}
 --- !u!4 &3512273663446933141 stripped
