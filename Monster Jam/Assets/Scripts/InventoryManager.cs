@@ -126,7 +126,6 @@ public class InventoryManager : MonoBehaviour
 			var category = validCategories[Random.Range(0, validCategories.Count)];
 			var item = category[Random.Range(0, category.Count)];
 			category.Remove(item);
-			Debug.Log("REMOVED FROM CATEGORY " + category.Count);
 			++Version;
 			return item;
 		}
