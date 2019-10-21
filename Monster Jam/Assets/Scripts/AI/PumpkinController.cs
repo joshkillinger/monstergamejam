@@ -26,24 +26,15 @@ public class PumpkinController : MonoBehaviour
 
     private Transform player;
 
-    IEnumerator Start()
+    void Start()
     {
-        while(player == null)
-        {
-            player = GameObject.FindWithTag("Player")?.transform;
-            yield return null;
-        }
-        initialized = true;
-        OnEnable();
+        animate = GetComponent<AnimateMovement>();
     }
+
     void OnEnable()
     {
-        if (initialized)
-        {
-            animate = GetComponent<AnimateMovement>();
-            nextState = idle();
-            StartCoroutine(aiLoop());
-        }
+        nextState = idle();
+        StartCoroutine(aiLoop());
     }
 
 #if UNITY_EDITOR
@@ -61,6 +52,13 @@ public class PumpkinController : MonoBehaviour
 
     private IEnumerator aiLoop()
     {
+        player = GameObject.FindWithTag("Player")?.transform;
+        while (player == null)
+        {
+            yield return null;
+            player = GameObject.FindWithTag("Player")?.transform;
+        }
+
         while (true)
         {
             yield return nextState;
