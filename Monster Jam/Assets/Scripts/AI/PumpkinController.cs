@@ -22,14 +22,28 @@ public class PumpkinController : MonoBehaviour
     public Color AlertGizmoColor = Color.magenta;
     public Color PursuitGizmoColor = Color.magenta;
 
+    public bool initialized = false;
+
     private Transform player;
 
+    IEnumerator Start()
+    {
+        while(player == null)
+        {
+            player = GameObject.FindWithTag("Player")?.transform;
+            yield return null;
+        }
+        initialized = true;
+        OnEnable();
+    }
     void OnEnable()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        animate = GetComponent<AnimateMovement>();
-        nextState = idle();
-        StartCoroutine(aiLoop());
+        if (initialized)
+        {
+            animate = GetComponent<AnimateMovement>();
+            nextState = idle();
+            StartCoroutine(aiLoop());
+        }
     }
 
 #if UNITY_EDITOR

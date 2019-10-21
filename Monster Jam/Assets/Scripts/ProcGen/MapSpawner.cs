@@ -59,6 +59,8 @@ public class MapSpawner : MonoBehaviour
         makeItemTurnerOfferThing();
         yield return spawnEnemySpawners();
         yield return spawnEnemies();
+        playerInstance = Instantiate(playerPrefab, new Vector3((mapDimension.x / 2) * tileDimension.x, 0f, (mapDimension.y / 2) * tileDimension.y) + new Vector3(5f, 0, 1f), Quaternion.identity);
+        playerInstance.GetComponentInChildren<PickupHinter>().SetItems(itemInstances);
         Debug.Log("Map spawning complete");
         
     }
@@ -73,8 +75,7 @@ public class MapSpawner : MonoBehaviour
                 if (i == mapDimension.x / 2 && j == mapDimension.y / 2)
                 {
                     tileInstances[i].Add(Instantiate(homeBaseTile, new Vector3(i * tileDimension.x, 0f, j * tileDimension.y), homeBaseTile.transform.rotation));
-                    playerInstance = Instantiate(playerPrefab, new Vector3(i * tileDimension.x, 0f, j * tileDimension.y) + new Vector3(5f, 0, 1f), Quaternion.identity);
-
+               
                 }
                 else if (i == 0 && j == 0)
                 {
@@ -114,7 +115,7 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < biomeWeightingPasses; i++)
         {
-            Debug.Log("Biome weighting " + (float)i / biomeWeightingPasses + "% done");
+            Debug.Log("Biome weighting " + (float)i / biomeWeightingPasses * 100 + "% done");
             biomeWeightingPass();
             yield return null;
         }
@@ -210,7 +211,7 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning items " + (float)i / mapDimension.x + "% done");
+            Debug.Log("Spawning items " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 if(Random.Range(0f, 1f)  < getTileDistanceRatioFromCenter(i, j))
@@ -229,7 +230,6 @@ public class MapSpawner : MonoBehaviour
             yield return null;
         }
 
-        playerInstance.GetComponentInChildren<PickupHinter>().SetItems(itemInstances);
     }
 
     protected IEnumerator spawnScenery()
@@ -241,7 +241,7 @@ public class MapSpawner : MonoBehaviour
 
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning scenery " + (float)i / mapDimension.x + "% done");
+            Debug.Log("Spawning scenery " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 MapTile tile = tileInstances[i][j].GetComponent<MapTile>();
@@ -361,7 +361,7 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning enemy spawners " + (float)i / mapDimension.x + "% done");
+            Debug.Log("Spawning enemy spawners " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 Vector3 spawnPosition = tileInstances[i][j].transform.position + new Vector3(Random.Range(1f, tileDimension.x - 1), 0f, Random.Range(1f, tileDimension.y - 1));
@@ -391,7 +391,7 @@ public class MapSpawner : MonoBehaviour
     {
         for(int i = 0; i < enemySpawnerInstances.Count; i++)
         {
-            Debug.Log("Spawning enemies " + (float)i / enemySpawnerInstances.Count + "%done");
+            Debug.Log("Spawning enemies " + (float)i / enemySpawnerInstances.Count  * 100 + "% done");
             EnemySpawner es = enemySpawnerInstances[i].GetComponent<EnemySpawner>();
             if(es != null)
             {
@@ -452,7 +452,7 @@ public class MapSpawner : MonoBehaviour
     {
         for (int i = 0; i < mapDimension.x; i++)
         {
-            Debug.Log("Spawning fences " + (float)i / mapDimension.x + "% done");
+            Debug.Log("Spawning fences " + (float)i / mapDimension.x * 100 + "% done");
             for (int j = 0; j < mapDimension.y; j++)
             {
                 MapTile tile = tileInstances[i][j].GetComponent<MapTile>();

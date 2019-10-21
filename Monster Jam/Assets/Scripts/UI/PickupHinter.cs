@@ -15,6 +15,8 @@ public class PickupHinter : MonoBehaviour
     List<float> scales;
     List<float> times;
 
+    private bool initialized = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,24 +34,27 @@ public class PickupHinter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //wiggle
-        for (int i = 0; i < line.positionCount; ++i)
+        if (initialized)
         {
-            line.SetPosition(i, new Vector3(Mathf.Sin(times[i] + Time.time) * scales[i], 0, line.GetPosition(i).z));
-        }
+            //wiggle
+            for (int i = 0; i < line.positionCount; ++i)
+            {
+                line.SetPosition(i, new Vector3(Mathf.Sin(times[i] + Time.time) * scales[i], 0, line.GetPosition(i).z));
+            }
 
-        //rotation
-        var target = getTarget();
-        if (target == null)
-        {
-            line.gameObject.SetActive(false);
-        }
-        else
-        {
-            line.gameObject.SetActive(true);
-            var toTarget = (target.position - transform.position).normalized;
-            var angle = Vector3.SignedAngle(Vector3.forward, toTarget, Vector3.up);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            //rotation
+            var target = getTarget();
+            if (target == null)
+            {
+                line.gameObject.SetActive(false);
+            }
+            else
+            {
+                line.gameObject.SetActive(true);
+                var toTarget = (target.position - transform.position).normalized;
+                var angle = Vector3.SignedAngle(Vector3.forward, toTarget, Vector3.up);
+                transform.rotation = Quaternion.Euler(0, angle, 0);
+            }
         }
     }
 
@@ -58,6 +63,7 @@ public class PickupHinter : MonoBehaviour
     public void SetItems(List<GameObject> items)
     {
         this.items = items;
+        initialized = true;
     }
 
     private Transform getTarget()

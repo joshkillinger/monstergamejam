@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class InventoryManager : MonoBehaviour
 	Transform player = null;
 
 	// Start is called before the first frame update
-	void Start()
+	IEnumerator Start()
     {
         items = new Dictionary<ItemType, List<InventoryItem>>()
         {
@@ -32,12 +33,14 @@ public class InventoryManager : MonoBehaviour
 		{
 			itemContainer = transform;
 		}
-
-		player = GameObject.FindWithTag("Player").transform;
+        while (player == null)
+        {
+            player = GameObject.FindWithTag("Player")?.transform;
+            yield return null;
+        }
+        yield return null;
 	}
-
-
-
+    
 	public void PickUp(InventoryItem item)
 	{
 		++Version;

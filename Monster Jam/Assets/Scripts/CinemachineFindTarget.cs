@@ -10,24 +10,30 @@ public class CinemachineFindTarget : MonoBehaviour
 	string targetTag = "Player";
 	GameObject target = null;
 	CinemachineVirtualCamera cineCamera = null;
+    bool initialized = false;
 
-	private void Start()
+	private IEnumerator Start()
 	{
 		cineCamera = GetComponent<CinemachineVirtualCamera>();
-		FindTarget();
+        while (target == null)
+        {
+            target = GameObject.FindWithTag(targetTag);
+            yield return null;
+        }
+        initialized = true;
 	}
 
 	private void Update()
 	{
-		if (target != null && cineCamera.Follow == null || cineCamera.LookAt != null)
-		{
-			cineCamera.Follow = target.transform;
-			cineCamera.LookAt = target.transform;
-		}
+        if (initialized)
+        {
+            if (target != null && cineCamera.Follow == null || cineCamera.LookAt != null)
+            {
+                cineCamera.Follow = target.transform;
+                cineCamera.LookAt = target.transform;
+            }
+        }
 	}
 
-	public void FindTarget()
-	{
-		target = GameObject.FindWithTag(targetTag);
-	}
+	
 }

@@ -31,10 +31,14 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         distanceToTurnOff = 80;
     }
 
-    protected void Start()
+    protected IEnumerator Start()
     {
         squareDistanceToTurnOff = distanceToTurnOff * distanceToTurnOff;
-        playerTransform = playerInstance.transform;
+        while (playerTransform == null)
+        {
+            playerTransform = playerInstance?.transform;
+            yield return null;
+        }
 
 		inventory = GameObject.FindWithTag("GameController").GetComponentInChildren<InventoryManager>();
     }
