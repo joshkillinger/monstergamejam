@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
 	[SerializeField]
-	string gameScene;
+	string gameScene = null;
+
+	[SerializeField]
+	GameObject tutorialPanel = null;
 
 	public void StartMatch()
 	{
@@ -16,5 +19,13 @@ public class StartMenu : MonoBehaviour
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+	public void ToggleTutorial()
+	{
+		if (tutorialPanel != null)
+		{
+			tutorialPanel.SetActive(!tutorialPanel.activeSelf);
+		}
 	}
 }
