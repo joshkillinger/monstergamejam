@@ -45,21 +45,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   biomeWeightingPasses: 50
-  mapDimension: {x: 50, y: 50}
+  mapDimension: {x: 30, y: 30}
   biomeTiles:
   - {fileID: 1718387221987414298, guid: fbbfa48a7d853a441b968d9edd546073, type: 3}
   - {fileID: 8360109682520808984, guid: d5a3f40c97a8bca42a63bfecb82823ed, type: 3}
   - {fileID: 2031433204325375776, guid: 3e590a97f519a754f9ce3190b427352e, type: 3}
+  sceneryStuff:
+  - obj: {fileID: 1310712008820790012, guid: 3a4f50ca677db3042939702cf568bf28, type: 3}
+    cemeteryProb: 1
+    fieldProb: 1
+    pumpkinProb: 1
+  - obj: {fileID: 2731716894696700763, guid: 632aa74ac15df294fb4d493bd8b0c915, type: 3}
+    cemeteryProb: 1
+    fieldProb: 1
+    pumpkinProb: 1
+  - obj: {fileID: 1982710096721777516, guid: f8b245ac2359f7a43b327310d04cc7b1, type: 3}
+    cemeteryProb: 1
+    fieldProb: 1
+    pumpkinProb: 1
   playerPrefab: {fileID: 4907411879461207385, guid: c0956092eacaf4a2c803c521f493e851,
     type: 3}
   enemySpawner: {fileID: 632132696798307426, guid: 4cea28115dfe11c479c327f180fd92fa,
     type: 3}
-  cemeteryBiomeTile: {fileID: 2031433204325375776, guid: 3e590a97f519a754f9ce3190b427352e,
-    type: 3}
-  pumpkinBiomeTile: {fileID: 8360109682520808984, guid: d5a3f40c97a8bca42a63bfecb82823ed,
-    type: 3}
-  fieldBiomeTile: {fileID: 1718387221987414298, guid: fbbfa48a7d853a441b968d9edd546073,
-    type: 3}
+  cemeteryBiomeTile:
+  - {fileID: 4240738566474336762, guid: 804ba4192f6801948ba0526274363d31, type: 3}
+  - {fileID: 5603604853879463530, guid: f194dfc69c28c234eaf221dce67d3b92, type: 3}
+  - {fileID: 3579383636152340876, guid: a7738f15b231b3843be4c6f54bec2075, type: 3}
+  pumpkinBiomeTile:
+  - {fileID: 8500281125065973499, guid: f914f06cff1aa2f478dc56bdf3a15f16, type: 3}
+  - {fileID: 547538451931205614, guid: aec384ced93ad1c43b96417b2d90da82, type: 3}
+  - {fileID: 7714734430202732051, guid: 5f184d47528408c4ca370e367f25e70c, type: 3}
+  fieldBiomeTile:
+  - {fileID: 7114852384665957915, guid: 7473b94a14263bf47aa7951866021962, type: 3}
+  - {fileID: 7616246683561669719, guid: 1809b62e52246fd41b5083af78b2f049, type: 3}
+  - {fileID: 4060100962458953948, guid: 229ec2d93e4226d429484e6e8541b3bf, type: 3}
   homeBaseTile: {fileID: 657012552675987756, guid: b29534a3c1f8da04fb27e867f915b467,
     type: 3}
   mapOrigin: {fileID: 6406266215149303589}

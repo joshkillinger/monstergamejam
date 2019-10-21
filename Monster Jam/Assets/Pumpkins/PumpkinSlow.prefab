@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!135 &70301599
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425766799003543703}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 1.27, z: 0}
 --- !u!1001 &2109641877238025417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PumpkinSlow
       objectReference: {fileID: 0}
+    - target: {fileID: 6199985763815875678, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: PlayerKnockback
@@ -34,6 +26,21 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerStunDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Height
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8818678722033141697, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
@@ -100,6 +107,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3141913e9ea860e49a6fb3cefe4b48cf, type: 2}
+    - target: {fileID: 849771013532115729, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7732329528308710039, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -139,6 +151,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246470315522921544, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 678244865269955427, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4336568216265252843, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
@@ -210,6 +232,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 63.426003
       objectReference: {fileID: 0}
+    - target: {fileID: 6032981321698418678, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2047903726908094658, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_Intensity
@@ -224,6 +251,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpotAngle
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211687572136106342, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615007766302169057, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4672008889507404494, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
@@ -245,9 +282,3 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff56dfcf01e65104581b43d522c426cf, type: 3}
---- !u!1 &5425766799003543703 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6199985763815875678, guid: ff56dfcf01e65104581b43d522c426cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 2109641877238025417}
-  m_PrefabAsset: {fileID: 0}
