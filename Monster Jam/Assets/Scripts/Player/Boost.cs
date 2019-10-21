@@ -12,6 +12,7 @@ public class Boost : MonoBehaviour
 	private Sprint sprint = null;
 
 	private bool boosting = false;
+    public bool Boosting => boosting;
 
 	[SerializeField]
 	private MoveStats boostStats = null;
