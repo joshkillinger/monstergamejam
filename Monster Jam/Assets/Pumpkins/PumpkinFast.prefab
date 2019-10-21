@@ -109,56 +109,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: MaxTurnAngle
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: AlertRange
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: PursuitRange
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: PlayerKnockback
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: PlayerStunDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Height
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8818678722033141697, guid: ff56dfcf01e65104581b43d522c426cf,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 8114258590056018059, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -213,6 +163,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: MaxTurnAngle
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: AlertRange
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: PursuitRange
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: PlayerKnockback
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188471410188216063, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: PlayerStunDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239441235171818244, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818678722033141697, guid: ff56dfcf01e65104581b43d522c426cf,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 849771013532115729, guid: ff56dfcf01e65104581b43d522c426cf,
         type: 3}

@@ -174,7 +174,7 @@ public class PumpkinController : MonoBehaviour
             }
 
             dist = sqrDistToPlayer;
-        } while (dist < PursuitRange);
+        } while (dist < AlertRange);
 
         nextState = alert();
     }
