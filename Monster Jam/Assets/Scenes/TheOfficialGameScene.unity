@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -273,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
         type: 3}
       propertyPath: sceneryStuff.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
         type: 3}
@@ -415,6 +415,27 @@ PrefabInstance:
     - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
         type: 3}
       propertyPath: sceneryStuff.Array.data[1].cemeteryProb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: sceneryStuff.Array.data[3].obj
+      value: 
+      objectReference: {fileID: 6878308317578551399, guid: d5b14e742837c4846a97a2527986927d,
+        type: 3}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: sceneryStuff.Array.data[3].cemeteryProb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: sceneryStuff.Array.data[3].fieldProb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406266214099056363, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
+        type: 3}
+      propertyPath: sceneryStuff.Array.data[3].pumpkinProb
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6406266215149303589, guid: 32f9fb830a54a6d4085fc5ab5d0cd29f,
