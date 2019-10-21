@@ -56,6 +56,8 @@ public class MapSpawner : MonoBehaviour
 
     protected IEnumerator spawnMap()
     {
+        yield return null;
+
         //TODO make loading screen here
         yield return mapSpawnInitialPass();
         updateLoading(.1f);
