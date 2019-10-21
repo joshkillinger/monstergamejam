@@ -13,14 +13,16 @@ public class HomeHinter : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        while (player == null && home == null)
+        while (player == null)
         {
             player = GameObject.FindWithTag("Player")?.transform;
-            home = GameObject.FindWithTag("Home")?.transform;
-
             yield return null;
         }
+        
+
+        home = GameObject.FindWithTag("Home")?.transform;
         rect = GetComponent<RectTransform>();
+        initialized = true;
     }
 
     // Update is called once per frame
