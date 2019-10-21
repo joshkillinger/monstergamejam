@@ -2291,7 +2291,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "As winter approaches, you need to prepare.... \n\nPumpkin Seeds and Candy
     Corn should keep your rat family fat and happy... \n\nJust watch out for those
-    pumpkins... \n\nThey get be protective of their offspring....\n"
+    pumpkins... \n\nThey can be protective of their offspring....\n"
 --- !u!222 &1182582015
 CanvasRenderer:
   m_ObjectHideFlags: 0
