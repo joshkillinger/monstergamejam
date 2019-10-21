@@ -75,6 +75,10 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         {
             turnOnOrOffObject(obj);
         }
+        foreach (GameObject obj in sceneryInstances)
+        {
+            turnOnOrOffObject(obj);
+        }
 
     }
 
@@ -112,6 +116,13 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
             if(fenceInstances[i] == null)
             {
                 fenceInstances.RemoveAt(i);
+            }
+        }
+        for (int i = sceneryInstances.Count - 1; i >= 0; i--)
+        {
+            if (sceneryInstances[i] == null)
+            {
+                sceneryInstances.RemoveAt(i);
             }
         }
     }
