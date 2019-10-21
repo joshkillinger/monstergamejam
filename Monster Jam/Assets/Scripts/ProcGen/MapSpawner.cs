@@ -540,7 +540,7 @@ public class MapSpawner : MonoBehaviour
 
     protected void makeItemTurnerOfferThing()
     {
-        gameObject.AddComponent<ItemTurnerOnAndOffer>().init(tileInstances, itemInstances, fenceInstances, sceneryInstances, playerInstance); 
+        gameObject.AddComponent<ItemTurnerOnAndOffer>().init(tileInstances, itemInstances, fenceInstances, sceneryInstances); 
     }
 
     protected GameObject getStraightUpRandomTile()

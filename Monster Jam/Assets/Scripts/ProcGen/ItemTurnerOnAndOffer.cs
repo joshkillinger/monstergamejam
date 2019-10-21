@@ -20,12 +20,11 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
 	InventoryManager inventory;
 
 
-    public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, List<GameObject> scenery, GameObject player)
+    public void init(List<List<GameObject>> tiles, List<GameObject> items, List<GameObject> fences, List<GameObject> scenery)
     {
         tileInstances = tiles;
         itemInstances = items;
         fenceInstances = fences;
-        playerInstance = player;
         sceneryInstances = scenery;
         enemyInstances = new List<GameObject>();
         distanceToTurnOff = 80;
@@ -36,7 +35,7 @@ public class ItemTurnerOnAndOffer : MonoBehaviour
         squareDistanceToTurnOff = distanceToTurnOff * distanceToTurnOff;
         while (playerTransform == null)
         {
-            playerTransform = playerInstance?.transform;
+            playerTransform = GameObject.FindWithTag("Player")?.transform;
             yield return null;
         }
 
