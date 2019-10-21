@@ -198,7 +198,7 @@ public class PumpkinController : MonoBehaviour
 
     private IEnumerator turn(float targetAngle)
     {
-        yield return animate.Turn(Helper.ClampAngle(targetAngle));
+        yield return animate.Turn(targetAngle);
     }
 
     private IEnumerator move()
@@ -208,7 +208,7 @@ public class PumpkinController : MonoBehaviour
 
     private IEnumerator moveAndTurn(float targetAngle)
     {
-        yield return animate.MoveAndTurn(Helper.ClampAngle(targetAngle));
+        yield return animate.MoveAndTurn(targetAngle);
     }
 
     private float angleToPlayer

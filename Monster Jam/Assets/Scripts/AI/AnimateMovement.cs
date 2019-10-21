@@ -43,12 +43,12 @@ public class AnimateMovement : MonoBehaviour
 
         animator.SetTrigger(TurnTrigger);
 
-        float startY = Helper.ClampAngle(transform.eulerAngles.y);
+        float startY = transform.eulerAngles.y;
         float endTime = Time.time + TurnTime;
         while (Time.time < endTime)
         {
             yield return null;
-            float lastY = Helper.ClampAngle(transform.localEulerAngles.y);
+            float lastY = transform.localEulerAngles.y;
             var t = 1 - ((endTime - Time.time) / TurnTime);
             float y = Mathf.LerpAngle(startY, targetAngle, t);
             transform.Rotate(Vector3.up, y - lastY);
@@ -94,14 +94,14 @@ public class AnimateMovement : MonoBehaviour
 
         animator.SetTrigger(MoveTrigger);
 
-        float startY = Helper.ClampAngle(transform.eulerAngles.y);
+        float startY = transform.eulerAngles.y;
         float endTime = Time.time + MoveTime;
         Vector3 cachedForward = transform.forward;
         while (Time.time < endTime)
         {
             yield return null;
 
-            float lastY = Helper.ClampAngle(transform.localEulerAngles.y);
+            float lastY = transform.localEulerAngles.y;
             var t = 1 - ((endTime - Time.time) / TurnTime);
             float y = Mathf.LerpAngle(startY, targetAngle, t);
             transform.Rotate(Vector3.up, y - lastY);
