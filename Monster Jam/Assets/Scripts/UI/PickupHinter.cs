@@ -62,6 +62,10 @@ public class PickupHinter : MonoBehaviour
 				var angle = Vector3.SignedAngle(Vector3.forward, toTarget, Vector3.up);
 				smell.root.transform.rotation = Quaternion.Euler(0, angle, 0);
 			}
+			else
+			{
+				smell.faded = true;
+			}
 
 			var color = smell.line.startColor;
 			if (smell == bestSmell)

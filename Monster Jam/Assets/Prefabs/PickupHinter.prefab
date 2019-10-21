@@ -102,50 +102,49 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  - {x: 0, y: 0, z: 4}
-  - {x: 0, y: 0, z: 5}
   - {x: 0, y: 0, z: 6}
-  - {x: 0, y: 0, z: 7}
-  - {x: 0, y: 0, z: 8}
-  - {x: 0, y: 0, z: 9}
-  - {x: 0, y: 0, z: 10}
-  - {x: 0, y: 0, z: 11}
   - {x: 0, y: 0, z: 12}
-  - {x: 0, y: 0, z: 13}
-  - {x: 0, y: 0, z: 14}
-  - {x: 0, y: 0, z: 15}
-  - {x: 0, y: 0, z: 16}
-  - {x: 0, y: 0, z: 17}
   - {x: 0, y: 0, z: 18}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
-  - {x: 0, y: 0, z: 19}
+  - {x: 0, y: 0, z: 24}
+  - {x: 0, y: 0, z: 30}
+  - {x: 0, y: 0, z: 36}
+  - {x: 0, y: 0, z: 42}
+  - {x: 0, y: 0, z: 48}
+  - {x: 0, y: 0, z: 54}
+  - {x: 0, y: 0, z: 60}
+  - {x: 0, y: 0, z: 66}
+  - {x: 0, y: 0, z: 72}
+  - {x: 0, y: 0, z: 78}
+  - {x: 0, y: 0, z: 84}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 96}
+  - {x: 0, y: 0, z: 102}
+  - {x: 0, y: 0, z: 108}
+  - {x: 0, y: 0, z: 114}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 10
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.24193549
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.989624
+        value: 1
+        inSlope: 0.60424125
+        outSlope: 0.60424125
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.1868512
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -234,7 +233,7 @@ MonoBehaviour:
   fadeDuration: 1
   minDistForHint: 1000
   maxDistForHint: 5000
-  MaxScale: 0.8
+  MaxScale: 3
   lineRootTemplate: {fileID: 3413547995779648076}
   length: 30
 --- !u!1 &3413547995779648076
